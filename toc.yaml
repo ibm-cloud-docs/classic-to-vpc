@@ -1,0 +1,100 @@
+toc:
+  properties:
+    subcollection: classic-to-vpc
+    href: /docs/classic-to-vpc
+    path: classic-to-vpc
+    audience: solution
+    category: solution_docs
+    content-type: solution
+    use-case: ApplicationMigration, CloudMigration, ApplicationModernization, classic to vpc migration, migration to vpc
+    description: Migration Guide for moving infrastructure and workloads from Classic to VPC. Initially, this will focus on Virtual Server Instances and related resources.
+    label: Classic to VPC Migration
+  entries:
+  - navgroup:
+      id: overview
+      topics:
+      - about.md
+      - overview.md
+      - scope.md
+  - navgroup:
+      id: architecture
+      topics:
+      - link:
+          label: VPC Solution Tutorials
+          href: https://cloud.ibm.com/docs/vpc?group=solution-tutorials
+      - topicgroup:
+          label: Reference Architectures
+          topics:
+          - link:
+              label: Cloud foundation for VPC - Standard
+              href: https://cloud.ibm.com/docs/deployable-reference-architectures?topic=deployable-reference-architectures-vpc-fully-configurable
+  - navgroup:
+      id: plan
+      topics:
+      - topicgroup:
+          id: solutions
+          label: Different migration solutions
+          topics:
+          - solutions.md
+          - vpc-plus.md
+      - pre-requisites.md
+      - topicgroup:
+          id: discovery
+          label: Discover your Classic Infrastructure
+          topics:
+          - discovery.md
+          - discovery-compute.md
+          - discovery-storage.md
+  - navgroup:
+      id: tutorial
+      topics:
+      - tutorial.md
+  - navgroup:
+      id: howto
+      topics:
+      - topicgroup:
+          id: migrate
+          label: Migrate to VPC
+          topics:
+          - topicgroup:
+              id: classic-vsi-to-vpc
+              label: Setup your VPC and migrate
+              topics:
+              - migrate.md
+              - migrate-steps.md
+          - compute_migrate.md
+          - storage-migrate.md
+          - image_template_migration.md
+      - topicgroup:
+          id: validate
+          label: Validate
+          topics:
+          - validate_tbd.md
+      - topicgroup:
+          id: finalize
+          label: Finalize
+          topics:
+          - cutover.md
+          - cleanup.md
+  - navgroup:
+      id: help
+      topics:
+      - faqs.md
+  - navgroup:
+      id: help
+      topics:
+      - faqs.md
+      - topicgroup:
+          id: troubleshoot-vpc
+          label: Troubleshooting
+          topics:
+          - topicgroup:
+              id: troubleshoot-vpc
+              label: Troubleshooting your VPC
+              topics:
+              - troubleshooting-vpc/troubleshoot-vpc-internet-access.md
+              - troubleshooting-vpc/troubleshoot-vpc-perf.md
+              - troubleshooting-vpc/troubleshoot-vpc-ssh.md
+              - link:
+                  label: Others
+                  href: https://cloud.ibm.com/docs/vpc?group=troubleshooting
