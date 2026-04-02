@@ -37,7 +37,7 @@ toc:
           topics:
           - solutions.md
           - vpc-plus.md
-      - pre-requisites.md
+      - prerequisites.md
       - topicgroup:
           id: discovery
           label: Discover your Classic Infrastructure
