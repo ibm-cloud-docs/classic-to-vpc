@@ -21,14 +21,14 @@ Before you begin the Classic to {{site.data.keyword.vpc_full}} migration process
 ## Account virtual routing function enablement
 {: #vrf-enablement}
 
-To connect over {{site.data.keyword.ibm}} private network to {{site.data.keyword.vpc_short}} resources, your account with classic infrastructure resources needs to have virtual routing function ([VRF](/docs/account?topic=account-vrf-service-endpoint&interface=ui)) enabled. Confirm that your account is VRF enabled. No additional steps are required if VRF is already enabled.
+To connect over {{site.data.keyword.IBM}} private network to {{site.data.keyword.vpc_short}} resources, your account with classic infrastructure resources needs to have virtual routing function ([VRF](/docs/account?topic=account-vrf-service-endpoint&interface=ui)) enabled. Confirm that your account is VRF enabled. No additional steps are required if VRF is already enabled.
 
 Before you enable VRF, read the [FAQ](/docs/account?topic=account-vrf-faqs) to understand and plan for enablement. A short intermittent connectivity loss can occur between your existing classic servers on the private network during the migration process.
 
 ## IBM Cloud CLI
 {: #ibm-cloud-cli}
 
-The {{site.data.keyword.cloud}} Command Line Interface (CLI) provides commands for managing resources in {{site.data.keyword.cloud_notm}}. When you install the stand-alone [IBM Cloud CLI](/docs/cli?topic=cli-getting-started), you get only the CLI itself without any recommended plug-ins or tools. Install the necessary plug-ins to work with your environment.
+The {{site.data.keyword.cloud.notm}} Command Line Interface (CLI) provides commands for managing resources in {{site.data.keyword.cloud_notm}}. When you install the stand-alone [IBM Cloud CLI](/docs/cli?topic=cli-getting-started), you get only the CLI itself without any recommended plug-ins or tools. Install the necessary plug-ins to work with your environment.
 
 You can find more information about plug-ins and command help in the [CLI reference](/docs/cli?topic=cli-ibmcloud_cli) section of the {{site.data.keyword.cloud.notm}} CLI documentation.
 

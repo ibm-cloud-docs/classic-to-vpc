@@ -16,7 +16,7 @@ ai-gen-assist: wca
 # Overview
 {: #overview}
 
-This documentation outlines the process of migrating virtual server instances from a Classic infrastructure to a {{site.data.keyword.vpc_full}} (VPC) in {{site.data.keyword.cloud_full}}. It covers essential steps, including preparing the source and target environments, creating a migration plan, and running the migration by using the {{site.data.keyword.cloud_notm}} CLI or API. The guide also addresses potential issues and best practices for a seamless transition.
+This documentation outlines the process of migrating virtual server instances from a Classic infrastructure to a {{site.data.keyword.vpc_full}} (VPC). It covers essential steps, including preparing the source and target environments, creating a migration plan, and running the migration by using the {{site.data.keyword.cloud_notm}} CLI or API. The guide also addresses potential issues and best practices for a seamless transition.
 {: shortdesc}
 
 ## Approaches to migration
