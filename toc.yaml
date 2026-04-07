@@ -6,16 +6,18 @@ toc:
     audience: solution
     category: solution_docs
     content-type: solution
-    use-case: ApplicationMigration, CloudMigration, ApplicationModernization, classic to vpc migration, migration to vpc
-    description: Migration Guide for moving infrastructure and workloads from Classic to VPC. Initially, this will focus on Virtual Server Instances and related resources.
+    product-page: /docs/classic-to-vpc/
+    use-case: ApplicationMigration, CloudMigration, ApplicationModernization, classic to vpc migration
+    description: Migration Guide for moving infrastructure and workloads from Classic to VPC.
     label: Classic to VPC Migration
   entries:
   - navgroup:
       id: overview
       topics:
-      - about.md
-      - overview.md
-      - scope.md
+      - topic: overview/about.md
+        navtitle: About Migration
+      - topic: overview/overview.md
+        navtitle: Overview of Classic to VPC Migration
   - navgroup:
       id: architecture
       topics:
@@ -35,20 +37,23 @@ toc:
           id: solutions
           label: Different migration solutions
           topics:
-          - solutions.md
-          - vpc-plus.md
-      - prerequisites.md
+          - topic: planning/solutions/solutions.md
+            navtitle: Migration Solutions
+          - link:
+              label: VPC Plus Solution
+              href: https://cloud.ibm.com/docs/wanclouds-vpc-plus
+      - topic: planning/pre-requisites.md
+        navtitle: Pre-requisites for Migration
       - topicgroup:
           id: discovery
           label: Discover your Classic Infrastructure
           topics:
-          - discovery.md
-          - discovery-compute.md
-          - discovery-storage.md
-  - navgroup:
-      id: tutorial
-      topics:
-      - tutorial.md
+          - topic: planning/discovery/discovery.md
+            navtitle: Discovery Overview
+          - topic: planning/discovery/discovery-compute.md
+            navtitle: Discovery of Classic Compute Resources
+          - topic: planning/discovery/discovery-storage.md
+            navtitle: Discovery of Classic Storage Resources
   - navgroup:
       id: howto
       topics:
@@ -58,32 +63,21 @@ toc:
           topics:
           - topicgroup:
               id: classic-vsi-to-vpc
-              label: Setup your VPC and migrate
+              label: Set up your VPC and migrate
               topics:
-              - migrate.md
-              - migrate-steps.md
-          - compute_migrate.md
-          - storage-migrate.md
-          - image_template_migration.md
-      - topicgroup:
-          id: validate
-          label: Validate
-          topics:
-          - validate_tbd.md
-      - topicgroup:
-          id: finalize
-          label: Finalize
-          topics:
-          - cutover.md
-          - cleanup.md
+              - topic: migrate.md
+                navtitle: Migrating from Classic virtual server instance to VPC virtual server instance
+              - topic: migrate-steps.md
+                navtitle: Setting up your VPC environment
+          - topic: compute_migrate.md
+            navtitle: Migration decisions for compute
+          - topic: storage-migrate.md
+            navtitle: Migrating data from IBM Cloud classic infrastructure to VPC
+          - topic: image_template_migration.md
+            navtitle: Migrating an image template to VPC
   - navgroup:
       id: help
       topics:
-      - faqs.md
-  - navgroup:
-      id: help
-      topics:
-      - faqs.md
       - topicgroup:
           id: troubleshoot-vpc
           label: Troubleshooting
@@ -92,9 +86,12 @@ toc:
               id: troubleshoot-vpc
               label: Troubleshooting your VPC
               topics:
-              - troubleshooting-vpc/troubleshoot-vpc-internet-access.md
-              - troubleshooting-vpc/troubleshoot-vpc-perf.md
-              - troubleshooting-vpc/troubleshoot-vpc-ssh.md
+              - topic: troubleshooting-vpc/troubleshoot-vpc-internet-access.md
+                navtitle: Why can't my application access the internet?
+              - topic: troubleshooting-vpc/troubleshoot-vpc-perf.md
+                navtitle: Why is my application performance slower than classic virtual server instance?
+              - topic: troubleshooting-vpc/troubleshoot-vpc-ssh.md
+                navtitle: Why am I unable to connect to my Virtual Servers for VPC using SSH?
               - link:
                   label: Others
                   href: https://cloud.ibm.com/docs/vpc?group=troubleshooting

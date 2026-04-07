@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-02"
+lastupdated: "2026-04-07"
 
 keywords: VSI, Classic Infrastructure, Migration
 
@@ -13,10 +13,10 @@ ai-gen-assist: wca
 
 {{site.data.keyword.attribute-definition-list}}
 
-# Overview
+# Overview of Classic to VPC Migration
 {: #overview}
 
-This documentation outlines the process of migrating virtual server instances from a Classic infrastructure to a {{site.data.keyword.vpc_full}} (VPC). It covers essential steps, including preparing the source and target environments, creating a migration plan, and running the migration by using the {{site.data.keyword.cloud_notm}} CLI or API. The guide also addresses potential issues and best practices for a seamless transition.
+This documentation outlines the process of migrating virtual server instances from a Classic infrastructure to the {{site.data.keyword.vpc_full}} (VPC). It covers essential steps, including preparing the source and target environments, creating a migration plan, and running the migration by using the {{site.data.keyword.cloud_notm}} CLI or API. The guide also addresses potential issues and best practices for a seamless transition.
 {: shortdesc}
 
 ## Approaches to migration
@@ -39,4 +39,4 @@ The choice of approach hinges on various factors, including migration objectives
 
 To begin migrating your classic virtual server instances efficiently, rebuild your system on {{site.data.keyword.vpc_short}}. With this approach, you can move to the latest supported operating system and take advantage of updated security fixes. It also helps you to adjust your continuous delivery pipelines to redeploy the application on new {{site.data.keyword.vpc_short}} instances. This approach is often the most efficient and cost-effective way to migrate, as you can optimize your application for the cloud environment and minimize downtime and disruption.
 
-![Diagram depicting the various approaches to migrating virtual servers](images/ImageDecisionTree.jpg "Diagram depicting the various approaches to migrating virtual servers"){: caption="Diagram depicting the different approaches to migrating virtual servers" caption-side="bottom"}
+![Diagram depicting the various approaches to migrating virtual servers](../images/ImageDecisionTree.jpg "Diagram depicting the various approaches to migrating virtual servers"){: caption="Diagram depicting the different approaches to migrating virtual servers" caption-side="bottom"}

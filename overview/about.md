@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-02"
+lastupdated: "2026-04-07"
 
 keywords: migration, migrate, migrating, migrate infrastructure, cloud migration
 
@@ -18,7 +18,7 @@ subcollection: classic-to-vpc
 Your decision to migrate can be driven by many factors, such as modernization, cost savings, consolidation, or closing a data center. You can also migrate to better align applications with cloud environments or to adopt new technologies like {{site.data.keyword.vpc_full}}. No matter the reason, a migration can range from something as simple as migrating a single virtual server instance to something much more complex. It can be as complex as migrating an entire application environment, pod, or even a full data center along with all its supporting components.
 {: shortdesc}
 
-![Migration approach](images/migrate-process.svg){: caption="Migration approach" caption-side="bottom"}
+![Migration approach](../images/migrate-process.svg){: caption="Migration approach" caption-side="bottom"}
 
 ## Migration approach
 {: #migration-approach}
