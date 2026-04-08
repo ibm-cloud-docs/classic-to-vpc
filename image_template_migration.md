@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2020, 2025
-lastupdated: "2025-10-24"
+  years: 2026, 2026
+lastupdated: "2026-04-08"
 
 keywords: migrate image template, image template, import image to vpc infrastructure, migrate virtual server, migrate instance
 
@@ -15,14 +15,14 @@ subcollection: classic-to-vpc
 # Migrating an image template to VPC
 {: #migrate-image-template-to-vpc}
 
-You can also migrate a virtual server instance from the Classic infrastructure to {{site.data.keyword.vpc_short}} by capturing its image. You can create an image template from the instance and import it in the VPC environment as a [custom image](/docs/vpc?topic=vpc-planning-custom-images).
+You can migrate a virtual server instance from the Classic infrastructure to {{site.data.keyword.vpc_full}} by capturing its image. You can also create an image template from the instance and import it in the VPC environment as a [custom image](/docs/vpc?topic=vpc-planning-custom-images).
 {: shortdesc}
 
 Capturing a virtual server instance image from the Classic infrastructure isn't supported for LinuxONE (s390x processor architecture).
 {: note}
 
 ## Before you begin
-{: #before-migrating-vsi-from-classic}
+{: #before-migrating-virtual-server-from-classic}
 
 Before you begin, make sure that the following prerequisites are fulfilled.
 
@@ -44,13 +44,11 @@ The following list is an overview of the migration steps.
 6. Import the custom image to the {{site.data.keyword.vpc_short}} infrastructure.
 7. Use the custom image to create a virtual server in {{site.data.keyword.vpc_short}}.
 
-If you already have an image template which matches all the requirements to deploy in {{site.data.keyword.vpc_short}}, you can skip to step 5.
+If you already have an image template that matches all the requirements to deploy in {{site.data.keyword.vpc_short}}, you can proceed to step 5.
 
-
-
-
-### Step 1 - Identifying the virtual server to migrate and create an image template
+### Identifying the virtual server to migrate and create an image template
 {: #migrate-create-template}
+{: #step-1}
 
 You can create an image template from a virtual server in the Classic infrastructure that you want to migrate to the {{site.data.keyword.vpc_short}} infrastructure. The image template captures an image of the existing virtual server. Make sure that you understand the following information about image templates.
 
@@ -63,47 +61,48 @@ Secondary disks and their associated files for an image template aren't supporte
 
 Complete the following steps to create an image template for the virtual server that you want to migrate.
 
-1. From the Dashboard in [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/){: external}, create an image template by clicking **Navigation menu** ![Menu icon](../../icons/icon_hamburger.svg) > **Infrastructure** > **Classic Infrastructure** > **Devices** > **Device List**.
+1. From the dashboard in [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/){: external}, create an image template by clicking **Navigation menu** ![Menu icon](../../icons/icon_hamburger.svg) > **Infrastructure** > **Classic Infrastructure** > **Devices** > **Device List**.
 2. Click the virtual server that you want to use.
-3. From the **Actions** menu, select **Create Image Template**. Make sure to name it something you can easily recognize. For more information, see [Creating an image template](/docs/image-templates?topic=image-templates-creating-an-image-template).
+3. From the **Actions** menu, select **Create image template**. Make sure to name it something you can easily recognize. For more information, see [Creating an image template](/docs/image-templates?topic=image-templates-creating-an-image-template).
 
-### Step 2 - Locate the image template and provision a virtual server
+### Locating the image template and provisioning a virtual server
 {: #migrate-locate-template}
+{: #step-2}
 
 From the image template that you created, provision a virtual server. This instance is a backup. You can customize this backup virtual server to meet the requirements of {{site.data.keyword.vpc_short}}.
 
 Complete the following steps to create a new virtual server from the image template.
 
-1. Click **Devices > Manage > Images** to locate the image template that you created.
+1. Click **Devices** > **Manage** > **Images** to locate the image template that you created.
 2. Provision a virtual server from the image template by clicking the Actions icon ![Actions icon](../icons/action-menu-icon.svg) for the image template and selecting **Order Public virtual server instance**.
 
-### Step 3 - Customize the virtual server for {{site.data.keyword.vpc_short}}
+### Customizing the virtual server for VPC
 {: #migrate-customize-image-vpc}
+{: #step-3}
 
 Complete the following customizations to prepare your image for the {{site.data.keyword.vpc_short}} infrastructure. Some of the customization requirements might already be met on your Classic infrastructure virtual server instance.
 
-#### Customizing a Linux virtual server
+#### Customizing a Linux&reg; virtual server
 {: #customize-linux-instance}
 
 Follow the instructions in [Creating a Linux custom image](/docs/vpc?topic=vpc-create-linux-custom-image) to customize on your Linux instance. Your instance needs to meet the following requirements.
    * The following arguments are present on the kernel command line: `nomodeset`, `nofb`, `vga=normal`, `console=ttyS0`.
    * [Virtio drivers](/docs/vpc?topic=vpc-create-linux-custom-image#virtio-drivers) are installed, plus any code that is needed by Virtio.
-   * Your image is [cloud-init enabled](/docs/vpc?topic=vpc-create-linux-custom-image#cloud-init). If your instance is already using cloud-init, then you will need to reset it's cloud-init state. Follow the [instructions](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#clean){: external} to remove all cloud-init artifacts and allow it to re-run all stages on bootup.
+   * Your image is [cloud-init enabled](/docs/vpc?topic=vpc-create-linux-custom-image#cloud-init). If your instance is already using cloud-init, then you need to reset its cloud-init state. Follow the [cloud-init clean instructions](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#clean){: external} to remove all cloud-init artifacts and allow it to rerun all stages on bootup.
    * For any auxiliary storage volumes that are mounted, you must include the _fstab_ entry `nofail`.
 
-#### Customizing a Windows instance
+#### Customizing a Windows&reg; instance
 {: #customize-windows-instance}
 
 Complete the following customizations on your Windows virtual server to prepare the image for {{site.data.keyword.vpc_short}}.
 
-1. Use Remote Desktop to access your Classic Windows server.
-1. Download and install the Windows VirtIO drivers in this server. The `virtio-win` driver files can be taken from an existing {{site.data.keyword.vpc_short}} virtual server by using the following steps.
+1. Use remote desktop to access your Classic Windows server.
+2. Download and install the Windows VirtIO drivers in this server. The `virtio-win` driver files can be taken from an existing {{site.data.keyword.vpc_short}} virtual server by using the following steps.
 
-
-   Microsoft recommends that you obtain the drivers from a licensed RHEL version 8 or 9 instance because drivers that are obtained from Red Hat are certified by Microsoft. The minimum recommended Red Hat virtio-win package version is `virtio-win-1.9.24`. However, using the most recent package is best.
+   Obtain the drivers from a licensed RHEL version 8 or 9 instance because drivers obtained from {{site.data.keyword.redhat_full}} are certified by Microsoft. The minimum recommended {{site.data.keyword.redhat_notm}} virtio-win package version is `virtio-win-1.9.24`. However, using the most recent package is best.
    {: note}
 
-   The Red Hat `virtio-win-1.9.24` ISO contains the following specific driver versions.
+   The {{site.data.keyword.redhat_notm}} `virtio-win-1.9.24` ISO contains the following specific driver versions:
 
    ```text
    100.84.104.19500 oem10.inf \vioprot.inf_amd64_af0659efdaba9e4b\vioprot.inf
@@ -122,34 +121,32 @@ Complete the following customizations on your Windows virtual server to prepare 
    {: screen}
 
    1. Obtain the required virtio-win drivers by provisioning or accessing an existing RHEL virtual server in {{site.data.keyword.vpc_short}}.
-   1. On your RHEL virtual server that you provisioned in {{site.data.keyword.vpc_short}}, install the `virtio-win` package by running the following command. In this example, the virtio-win package is installed on RHEL version 8.
+   2. On the RHEL virtual server that you provisioned in {{site.data.keyword.vpc_short}}, install the `virtio-win` package by running the following command. In this example, the virtio-win package is installed on RHEL version 8.
 
-```sh
-yum install virtio-win
-```
-{: pre}
+   ```sh
+   yum install virtio-win
+   ```
+   {: pre}
 
    The output looks like the following example.
 
-```text
-Installed: virtio-win-1.9.24-2.el8_5.noarch
-```
-{: screen}
+   ```text
+   Installed: virtio-win-1.9.24-2.el8_5.noarch
+   ```
+   {: screen}
 
-   1. Access the virtio-win ISO in the `/usr/share/virtio-win` directory.
+   3. Access the virtio-win ISO in the `/usr/share/virtio-win` directory.
 
-```sh
-cd /usr/share/virtio-win/
-```
-{: pre}
+   ```sh
+   cd /usr/share/virtio-win/
+   ```
+   {: pre}
 
-   1. Use the WinSCP utility to copy the `virtio-win` ISO file, such as `virtio-win-1.9.24.iso` from the RHEL VPC server to the Classic Windows server.
-   1. Locate the downloaded ISO and double-click it to mount it.
-   1. From the mounted ISO, run `virtio-win-guest-tools.exe` and complete the installation.
-      1. Locate the downloaded ISO and double-click it to mount it.
-      1. From the mounted ISO, run `virtio-win-guest-tools.exe` and complete the installation.
-   1. Install and configure cloudbase-init from [Cloudbase-Init installation package](https://cloudbase.it/cloudbase-init/#download){: external}. If the instance is already cloudbase-init enabled, then you will need to review the below steps and finally reset cloudbase-init state.
-   1. Modify the `cloudbase-init.conf` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init.conf`) to match the following values. Don't remove any other content from the file.
+   4. Use the WinSCP utility to copy the `virtio-win` ISO file, such as `virtio-win-1.9.24.iso`, from the RHEL VPC server to the Classic Windows server.
+   5. Locate the downloaded ISO and double-click it to mount it.
+   6. From the mounted ISO, run `virtio-win-guest-tools.exe` and complete the installation.
+   7. Install and configure Cloudbase-Init from [Cloudbase-Init installation package](https://cloudbase.it/cloudbase-init/#download){: external}. If the instance is already Cloudbase-Init enabled, then you need to review the following steps and finally reset the Cloudbase-Init state.
+   8. Modify the `cloudbase-init.conf` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init.conf`) to match the following values. Don't remove any other content from the file.
 
    ```text
    [DEFAULT]
@@ -186,7 +183,7 @@ cd /usr/share/virtio-win/
    ```
    {: screen}
 
-1. Modify the `cloudbase-init-unattend.conf` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf`) to match the following values. Don't remove any other content from the file.
+3. Modify the `cloudbase-init-unattend.conf` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\cloudbase-init-unattend.conf`) to match the following values. Don't remove any other content from the file.
 
    ```text
    [DEFAULT]
@@ -217,8 +214,8 @@ cd /usr/share/virtio-win/
    ```
    {: screen}
 
-1. Modify the `Unattend.xml` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml`) and set the `PersistAllDeviceInstalls` value to `false`.
-1. Run `Sysprep` by using the following command from the command prompt.
+4. Modify the `Unattend.xml` file (`C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml`) and set the `PersistAllDeviceInstalls` value to `false`.
+5. Run `Sysprep` by using the following command from the command prompt.
 
    ```sh
    C:\Windows\System32\Sysprep\Sysprep.exe /oobe /generalize /shutdown "/unattend:C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\Unattend.xml"
@@ -228,7 +225,7 @@ cd /usr/share/virtio-win/
    This command shuts down the system.
    {: important}
 
-1. If the instance is already cloudbase-init enabled, then you will need to reset cloudbase-init state and artifacts. This will allow it to re-run firstboot steps again.
+6. If the instance is already Cloudbase-Init enabled, then you need to reset the Cloudbase-Init state and artifacts. The reset will run the first boot steps again.
    1. Stop the cloudbase-init service
 
    ```sh
@@ -236,8 +233,8 @@ cd /usr/share/virtio-win/
    ```
    {: pre}
 
-   1. Delete cached instance data:
-  
+   2. Delete cached instance data:
+
    ```powershell
    Remove-Item "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\cache" -Recurse -Force
    Remove-Item "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\log" -Recurse -Force
@@ -246,50 +243,54 @@ cd /usr/share/virtio-win/
    {: pre}
 
 
-   1. (Optional) Delete persisted network config if present:
-  
+   3. (Optional) Delete persistent network configuration if present:
+
    ```powershell
    Remove-Item "C:\Program Files\Cloudbase Solutions\Cloudbase-Init\conf\networks.json" -Force
-   ``` 
+   ```
    {: pre}
 
-   1. Restart the service:
+   4. Restart the service:
 
    ```powershell
    net start cloudbase-init
    ```
    {: pre}
 
-### Step 4 - Creating an image template of your customized virtual server
+### Creating an image template of your customized virtual server
 {: #migrate-new-image-template}
+{: #step-4}
 
-When your customizations are complete on your backup virtual server, create a new image template by using the following steps.
+When customization is complete on your backup virtual server, create a new image template by using the following steps:
 
 1. From the Dashboard in [{{site.data.keyword.cloud_notm}} console](https://cloud.ibm.com/){: external}, click **menu** ![Menu icon](../../icons/icon_hamburger.svg) > **Infrastructure** > **Classic Infrastructure** > **Devices** > **Device List** to create an image template.
-1. Click the backup virtual server that you previously customized.
-1. From the **Actions** menu, select **Create Image Template**. The image template must be created before you can proceed with the following steps.
+2. Click the backup virtual server that you previously customized.
+3. From the **Actions** menu, select **Create Image Template**. The image template must be created before you can proceed with the following steps.
 
-### Step 5 - Exporting the image template to {{site.data.keyword.cos_full_notm}}
+### Exporting the image template to IBM Cloud Object Storage
 {: #migrate-export-template}
+{: #step-5}
 
 To export the image template that you created from the modified virtual server to {{site.data.keyword.cos_full_notm}}, complete the following steps.
 
-1. Locate the new image template that you created on the **Image Templates** page by clicking **Devices > Manage > Images**.
-1. From the **Image Templates** page, click **...** for the image template that you want to export and select **Export to IBM Cloud Object Storage**. For more information, see [Exporting an image to {{site.data.keyword.cos_full_notm}}](/docs/image-templates?topic=image-templates-exporting-an-image-to-ibm-cloud-object-storage).
+1. Locate the new image template that you created on the **Image templates** page by clicking **Devices** > **Manage** > **Images**.
+2. From the **Image Templates** page, click the ellipsis **...** for the image template that you want to export and select **Export to IBM Cloud Object Storage**. For more information, see [Exporting an image to {{site.data.keyword.cos_full_notm}}](/docs/image-templates?topic=image-templates-exporting-an-image-to-ibm-cloud-object-storage).
 
-### Step 6 - Importing the custom image to the {{site.data.keyword.vpc_short}} infrastructure
+### Importing the custom image to the VPC infrastructure
 {: #migrate-import-image}
+{: #step-6}
 
-1. In the {{site.data.keyword.cloud_notm}} console, click **Navigation menu** icon ![Menu icon](../icons/icon_hamburger.svg) **> Infrastructure** ![VPC icon](../../icons/vpc.svg) **> Compute > Images**.
+1. In the {{site.data.keyword.cloud_notm}} console, click **Navigation menu** icon ![Menu icon](../icons/icon_hamburger.svg) > **Infrastructure** ![VPC icon](../../icons/vpc.svg) > **Compute** > **Images**.
 1. On the **Custom images** tab, click **Import Custom Image**. For more information, see [Importing a custom image](/docs/vpc?topic=vpc-importing-custom-images-vpc).
 
-### Step 7 - Using a custom image to create a virtual server in {{site.data.keyword.vpc_short}}
+### Using a custom image to create a virtual server in VPC
 {: #migrate-create-virtual-server}
+{: #step-7}
 
-When the image that you imported is available on the **Custom images** tab of the **Images for VPC** page, you can use it to create a virtual server instance in the {{site.data.keyword.vpc_short}} infrastructure.
+After the imported image is available on the **Custom images** tab of the **Images for VPC** page, you can use it to create a virtual server instance in the {{site.data.keyword.vpc_short}} infrastructure.
 
 1. On the **Custom images** tab, find the name of the custom image that you imported, click Actions ![More Actions icon](../icons/action-menu-icon.svg), and select **New virtual server**.
-1. In [{{site.data.keyword.cloud_notm}} console](https://console.cloud.ibm.com){: external}, go to **Navigation menu** icon ![menu icon](../icons/icon_hamburger.svg) **> Infrastructure** ![VPC icon](../../icons/vpc.svg) **> Compute > Virtual server instances**.
-1. On the **Virtual server instances** page, click Actions ![More Actions icon](../icons/action-menu-icon.svg). Stop and then start the virtual server before you access it.
-1. Create inbound and outbound security groups to give access to the RDP traffic port 3389. For more information, see [Setting up a security group for your resource](/docs/vpc?topic=vpc-configuring-the-security-group&interface=ui).
-1. To generate a password to allow access to Windows and RDP with a floating IP, see [Connecting to Windows instances](/docs/vpc?topic=vpc-vsi_is_connecting_windows).
+2. In [{{site.data.keyword.cloud_notm}} console](https://console.cloud.ibm.com){: external}, go to the **Navigation menu** icon ![menu icon](../icons/icon_hamburger.svg) > **Infrastructure** ![VPC icon](../../icons/vpc.svg) > **Compute** > **Virtual server instances**.
+3. On the **Virtual server instances** page, click actions ![More Actions icon](../icons/action-menu-icon.svg). Stop and then start the virtual server before you access it.
+4. Create inbound and outbound security groups to give access to the RDP traffic port 3389. For more information, see [Setting up a security group for your resource](/docs/vpc?topic=vpc-configuring-the-security-group&interface=ui).
+5. To generate a password to access to Windows and RDP with a floating IP, see [Connecting to Windows instances](/docs/vpc?topic=vpc-vsi_is_connecting_windows).

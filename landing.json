@@ -32,8 +32,16 @@
     "view_more": "/docs/classic-to-vpc?topic=classic-to-vpc-overview",
     "tiles": [
       {
-        "date": "17 Nov 2025",
-        "title": "Migration approaches and considerations - Initial version"
+        "date": "06 April 2026",
+        "title": "Migration approaches and considerations"
+      },
+      {
+        "date": "06 April 2026",
+        "title": "Migrating from Classic virtual server instance to VPC virtual server instance"
+      },
+      {
+        "date": "06 April 2026",
+        "title": "Migrating an image template to VPC"
       }
     ]
   }
