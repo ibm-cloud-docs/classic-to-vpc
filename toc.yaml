@@ -42,8 +42,8 @@ toc:
           - link:
               label: VPC Plus Solution
               href: https://cloud.ibm.com/docs/wanclouds-vpc-plus
-      - topic: planning/pre-requisites.md
-        navtitle: Pre-requisites for Migration
+      - topic: planning/prerequisites.md
+        navtitle: Prerequisites for Migration
       - topicgroup:
           id: discovery
           label: Discover your Classic Infrastructure
