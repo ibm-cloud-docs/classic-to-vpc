@@ -37,22 +37,22 @@ toc:
           id: solutions
           label: Different migration solutions
           topics:
-          - topic: planning/solutions/solutions.md
+          - topic: solutions.md
             navtitle: Migration Solutions
           - link:
               label: VPC Plus Solution
               href: https://cloud.ibm.com/docs/wanclouds-vpc-plus
-      - topic: planning/prerequisites.md
+      - topic: prerequisites.md
         navtitle: Prerequisites for Migration
       - topicgroup:
           id: discovery
           label: Discover your Classic Infrastructure
           topics:
-          - topic: planning/discovery/discovery.md
+          - topic: discovery.md
             navtitle: Discovery Overview
-          - topic: planning/discovery/discovery-compute.md
+          - topic: discovery-compute.md
             navtitle: Discovery of Classic Compute Resources
-          - topic: planning/discovery/discovery-storage.md
+          - topic: discovery-storage.md
             navtitle: Discovery of Classic Storage Resources
   - navgroup:
       id: howto
