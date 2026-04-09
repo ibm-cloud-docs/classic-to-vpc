@@ -38,7 +38,7 @@ Before you start the migration process, it's important to understand the {{site.
 
 The following diagram illustrates a typical {{site.data.keyword.vpc_short}} setup with a single virtual server instance, including all essential components.
 
-![Diagram depicting a simple VPC environment with virtual server instance](../images/VPC.drawio.svg "Diagram depicting a simple VPC environment with a virtual server instance"){: caption="Diagram depicting a simple VPC environment with a virtual server instance" caption-side="bottom"}
+![Diagram depicting a simple VPC environment with virtual server instance](images/VPC.drawio.svg "Diagram depicting a simple VPC environment with a virtual server instance"){: caption="Diagram depicting a simple VPC environment with a virtual server instance" caption-side="bottom"}
 
 ### Key VPC components
 {: #key-vpc-components}
