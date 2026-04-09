@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-08"
+lastupdated: "2026-04-09"
 
 keywords: migration solutions, classic to vpc migration
 
@@ -71,7 +71,7 @@ If you prefer to use external third-party services and capabilities for migratio
 ### VPC+ Cloud Migration
 {: #vpc-cloud-migration}
 
-If you want to migrate your {{site.data.keyword.cloud_notm}} classic infrastructure (compute, network, and storage) to {{site.data.keyword.vpc_short}}, you can use {{site.data.keyword.vpc-plus-migration}}. {{site.data.keyword.vpc-plus-migration}} is a third-party, software-based, migration-as-a-service solution, provided by Wanclouds, for migrating components from classic infrastructure to your {{site.data.keyword.vpc_short}}. With {{site.data.keyword.vpc-plus-migration}}, you can discover and choose resources for migration, create, and set up those resources in your {{site.data.keyword.vpc_short}} environment. You can also run and manage your {{site.data.keyword.vpc_short}} environment from within the tool.
+If you want to migrate your {{site.data.keyword.cloud}} classic infrastructure (compute, network, and storage) to {{site.data.keyword.vpc_short}}, you can use {{site.data.keyword.vpc-plus-migration}}. {{site.data.keyword.vpc-plus-migration}} is a third-party, software-based, migration-as-a-service solution, provided by Wanclouds, for migrating components from classic infrastructure to your {{site.data.keyword.vpc_short}}. With {{site.data.keyword.vpc-plus-migration}}, you can discover and choose resources for migration, create, and set up those resources in your {{site.data.keyword.vpc_short}} environment. You can also run and manage your {{site.data.keyword.vpc_short}} environment from within the tool.
 
 You can migrate the following key elements of {{site.data.keyword.cloud_notm}} classic infrastructure to {{site.data.keyword.vpc_short}}:
 
@@ -91,16 +91,16 @@ For more information, see [Getting started with VPC+ migration](/docs/wanclouds-
 ### ConvertIO Workload Migration
 {: #convertio-workload-migration}
 
-PrimaryIO empowers organizations to move to the cloud seamlessly. You can adopt PrimaryIO as a primary production environment or use it for disaster recovery. By offering a comprehensive suite of tools and services, PrimaryIO facilitates efficient, secure, and low-risk migration of VMware workloads to IBM Cloud&reg; help ensure minimal disruption and maximum operational continuity.
+PrimaryIO empowers organizations to move to the cloud seamlessly. You can adopt PrimaryIO as a primary production environment or use it for disaster recovery. By offering a comprehensive suite of tools and services, PrimaryIO facilitates efficient, secure, and low-risk migration of VMware workloads to {{site.data.keyword.cloud_notm}} help ensure minimal disruption and maximum operational continuity.
 
-Benefits of using PrimaryIO for {{site.data.keyword.cloud}} migration:
+Benefits of using PrimaryIO for {{site.data.keyword.cloud_notm}} migration:
 
 * Complete VM migration - managed by PrimaryIO
 * Zero-rebuild target VMs
 * Reduced migration effort and timeline
 * Predictable outcome
 * Scalable and repeatable process
-* Tight integration with {{site.data.keyword.cloud.notm}} infrastructure
+* Tight integration with {{site.data.keyword.cloud_notm}} infrastructure
 
 For more information, see [ConvertIO](https://cloud.ibm.com/catalog?search=primaryio#search_results) {: external}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-08"
+lastupdated: "2026-04-09"
 
 keywords: migration, migrate, migrating, migrate data, data migration
 
@@ -15,7 +15,7 @@ subcollection: classic-to-vpc
 # Migrating data from IBM Cloud classic infrastructure to VPC
 {: #data-migration-classic-to-vpc}
 
-This guide shows you how to connect your {{site.data.keyword.cloud_full}} classic infrastructure to {{site.data.keyword.vpc_full}} and migrate your data, especially for block or file volumes, as part of your migration journey. While many different data migration tools are available, the guidance on this page uses `rsync`. `Rsync` is an open source utility that provides file transfer between two devices. It is available for both Linux&reg; and Windows&reg; platforms.
+This guide shows you how to connect your {{site.data.keyword.cloud}} classic infrastructure to {{site.data.keyword.vpc_full}} and migrate your data, especially for block or file volumes, as part of your migration journey. While many different data migration tools are available, the guidance on this page uses `rsync`. `Rsync` is an open source utility that provides file transfer between two devices. It is available for both Linux&reg; and Windows&reg; platforms.
 
 For more information, see [Rsync documentation](https://linux.die.net/man/1/rsync){: external}
 
