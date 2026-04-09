@@ -35,7 +35,7 @@ toc:
       topics:
       - topicgroup:
           id: solutions
-          label: Different migration solutions
+          label: Different Migration Solutions
           topics:
           - topic: solutions.md
             navtitle: Migration Solutions
