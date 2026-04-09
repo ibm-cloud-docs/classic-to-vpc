@@ -26,7 +26,7 @@ You provision a new virtual server instance, and it shows as running, but you ca
 
 Your SSH session times out while you connect to the host, or authentication fails after connection.
 
-## Why it is happening?
+## Why is it happening?
 {: #tsCauses-vpc-ssh}
 
 - The security group does not allow SSH traffic.

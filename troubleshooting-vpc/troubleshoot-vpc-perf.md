@@ -26,7 +26,7 @@ Your application is running slowly and is not handling requests at the same scal
 
 Your application is running slowly or taking longer to handle requests. CPU utilization or IO wait times might be high.
 
-## Why it is happening?
+## Why is it happening?
 {: #tsCauses-vpc-performance}
 
 - The virtual server instance profile is undersized.

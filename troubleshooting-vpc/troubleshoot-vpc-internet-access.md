@@ -26,7 +26,7 @@ Your application that is running on {{site.data.keyword.vsi_is_short}} cannot co
 
 Your application fails to establish outbound connections to the public internet. DNS resolution is successful, but the connection fails.
 
-## Why it is happening?
+## Why is it happening?
 {: #tsCauses-vpc-internet-access}
 
 - A floating IP address or public gateway is not configured.
