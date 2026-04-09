@@ -15,7 +15,7 @@ subcollection: classic-to-vpc
 # Discovery of classic compute resources
 {: #discover-classic-compute-resources}
 
-Before you migrate from classic infrastructure to a {{site.data.keyword.vpc_full}} (VPC) infrastructure, it is important to create an inventory of all existing classic resources and capture their configuration and billing details. This approach helps ensure that you can plan capacity, cost, and migration approach accurately.
+Before you migrate from classic infrastructure to {{site.data.keyword.vpc_full}} (VPC) infrastructure, it is important to create an inventory of all existing classic resources and capture their configuration and billing details. This approach helps ensure that you can plan capacity, cost, and migration approach accurately.
 {: shortdesc}
 
 ## Information to collect
