@@ -38,7 +38,7 @@ Migration is a multi-step process, typically involving but not limited to follow
 ### Provision your landing zone
 {: #provision-landing-zone}
 
-   Provision your base {{site.data.keyword.vpc_short}} environment that includes subnets, virtual server instances, and empty storage volumes. You can use [deployable architectures](/docs/secure-enterprise?topic=secure-enterprise-understand-module-da) that include deployable architecture solutions, such as the [VPC landing zone](https://cloud.ibm.com/catalog/architecture/deploy-arch-ibm-slz-vpc){ :external}.
+   Provision your base {{site.data.keyword.vpc_short}} environment that includes subnets, virtual server instances, and empty storage volumes. You can use [deployable architectures](/docs/secure-enterprise?topic=secure-enterprise-understand-module-da) that include deployable architecture solutions, such as the [VPC landing zone](https://cloud.ibm.com/catalog/architecture/deploy-arch-ibm-slz-vpc){: external}.
 
 ### Deploying your application
 {: #deploy-application}

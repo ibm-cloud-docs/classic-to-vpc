@@ -116,7 +116,7 @@ Plan your {{site.data.keyword.vpc_short}} structure:
 {: #verifying-prerequisites}
 {: #step-4}
 
-Confirm that you completed all prerequisites that are listed in [Pre-requisites](/docs/classic-to-vpc?topic=classic-to-vpc-pre-requisites):
+Confirm that you completed all prerequisites that are listed in [Prerequisites](/docs/classic-to-vpc?topic=classic-to-vpc-key-migration-prerequisites):
 
 * VRF-enabled account
 * IBM Cloud CLI with {{site.data.keyword.vpc_short}} plug-in installed

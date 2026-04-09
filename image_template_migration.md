@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-08"
+lastupdated: "2026-04-09"
 
 keywords: migrate image template, image template, import image to vpc infrastructure, migrate virtual server, migrate instance
 
@@ -74,7 +74,7 @@ From the image template that you created, provision a virtual server. This insta
 Complete the following steps to create a new virtual server from the image template.
 
 1. Click **Devices** > **Manage** > **Images** to locate the image template that you created.
-2. Provision a virtual server from the image template by clicking the Actions icon ![Actions icon](../icons/action-menu-icon.svg) for the image template and selecting **Order Public virtual server instance**.
+2. Provision a virtual server from the image template by clicking the actions icon ![Actions icon](../icons/action-menu-icon.svg) for the image template and select **Order public virtual server instance**.
 
 ### Customizing the virtual server for VPC
 {: #migrate-customize-image-vpc}

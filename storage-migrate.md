@@ -185,7 +185,7 @@ GitHub instructions on [Installation of OpenSSH for Windows](https://github.com/
     }
     ```
 
-#### Windows 2016, 2019, 2022
+#### Windows 2016
 {: #windows-openssh-installation}
 
 The follow instructions are for Windows Server 2016, which is in extended support until January 12, 2027. It is recommended to upgrade to Windows Server 2019 or 2022 for better security and support.
