@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-02"
+lastupdated: "2026-04-09"
 
 keywords: question about classic to vpc migration, performance
 
@@ -21,19 +21,19 @@ content-type: troubleshoot
 Your application is running slowly and is not handling requests at the same scale as your classic virtual server instance.
 {: shortdesc}
 
-## What’s happening
+## What is happening?
 {: #tsSymptoms-vpc-performance}
 
 Your application is running slowly or taking longer to handle requests. CPU utilization or IO wait times might be high.
 
-## Why it’s happening
+## Why it is happening?
 {: #tsCauses-vpc-performance}
 
 - The virtual server instance profile is undersized.
 - Block storage IOPS or bandwidth is insufficient.
 - Network bandwidth is constrained.
 
-## How to fix it
+## How do you fix it?
 {: #tsResolve-vpc-performance}
 
 1. Upgrade to a larger virtual server instance profile.
