@@ -254,5 +254,5 @@ Complete the following steps to finalize your migration and prepare for ongoing 
 * [VPC documentation](/docs/vpc)
 * [VPC CLI reference](/docs/vpc?topic=vpc-vpc-reference)
 * [VPC API reference](/apidocs/vpc)
-* [VPC Terraform provider](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs)
-* [IBM Cloud Architecture Center](https://www.ibm.com/architectures/hybrid)
+* [VPC Terraform provider](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}
+* [IBM Cloud Architecture Center](https://www.ibm.com/architectures/hybrid){: external}
