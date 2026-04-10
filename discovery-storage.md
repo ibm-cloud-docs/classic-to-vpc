@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-09"
+lastupdated: "2026-04-10"
 
 keywords: storage, classic virtual server instance
 
@@ -314,7 +314,7 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
    For more information, see [get virtual server instance details](https://sldn.softlayer.com/reference/services/SoftLayer_Virtual_Guest/){: external}.
    {: api}
 
-2. Get the target IP address of the iSCSI block volume. Refer to Step 2 in [Finding the target IP address of the block volume](#show-full-details-for-an-iscsi-block-volume-example).
+2. Get the target IP address of the iSCSI block volume. Refer to Step 2 in [Finding the target IP address of the block volume](#show-full-details-for-iscsi-block-volume-example).
 
 3. Get the iSCSI block device path.
 
@@ -790,9 +790,9 @@ For more information, see [getReplicationPartners for file volume](https://sldn.
 
     For more information, see [get authorized VS for the file share volume](https://sldn.softlayer.com/reference/services/SoftLayer_Network_Storage/){: external}
 
-2. Get mount address: use the `ibmcloud sl file volume-detail FILE_VOLUME_ID` command to find the mount address of the NFS file. Refer to [View file volume mount address](#showing-full-details-for-file-volume)
+2. Get mount address: use the `ibmcloud sl file volume-detail FILE_VOLUME_ID` command to find the mount address of the NFS file. Refer to [View file volume mount address](#show-full-details-for-file-volume-example)
 
-3. Get mount path: run the `df -h` or `mount` command in the authorized virtual server instance to find the NFS file share mount path. Refer to Step1 in [Get the name of the File mounted on a virtual server instance](#showing-file-volume-details-from-mpath-cli)
+3. Get mount path: run the `df -h` or `mount` command in the authorized virtual server instance to find the NFS file share mount path. Refer to Step1 in [Get the name of the File mounted on a virtual server instance](#show-file-volume-details-from-mpath-cli-example)
 
 ### Showing file volume details from mpath CLI
 {: #show-file-volume-details-from-mpath-cli-example}
@@ -837,7 +837,7 @@ For more information, see [getReplicationPartners for file volume](https://sldn.
     ```
     {: pre}
 
-2. Get the file volume details by using the name. For more information, see the [command to get file volume detail](#showing-full-details-for-file-volume).
+2. Get the file volume details by using the name. For more information, see the [command to get file volume detail](#show-full-details-for-file-volume-example).
 
     Example output:
 
@@ -917,7 +917,7 @@ ibmcloud sl vs storage VSI_ID
 
 Refer to the **Portable Storage** section in the output to find its **description**, **capacity**, and **location** of the portable storage attached to the virtual server instance.
 
-Example output: Refer to [Example](#listing-all-storage-volumes-attached-to-virtual-servers-from-the-cli)
+Example output: Refer to [Example](#list-all-storage-attached-to-virtual-servers-cli-example)
 
 With the API -
 
@@ -1109,7 +1109,7 @@ In this case, the device number is 4. Therefore, the portable storage volume tha
 ### Find a mount point in the virtual server instance for a particular local/portable storage volume example
 {: #find-mount-point-from-portable-volume-details-cli-example}
 
-1. Find the device number of the local/portable storage volume that is attached to the virtual server instance. The **diskImage** field under **blockDevices** contains details of the portable storage volume including the device number. For more information, see [Showing local and portable volume details](#showing-local-and-portable-volume-details-from-mpath-cli-example).
+1. Find the device number of the local/portable storage volume that is attached to the virtual server instance. The **diskImage** field under **blockDevices** contains details of the portable storage volume including the device number. For more information, see [Showing local and portable volume details](#show-local-and-portable-volume-details-from-mpath-cli-example).
 2. Map the device number to the block device name. Block device numbers start at 0 and correspond to disks in alphabetical order. For example, xvda is device number 0, xvdb is 1, and xvdc is 2.
 3. Map the block device names to the mount point. In the following example, a file system exists on xvde (see the `NAME` column) for which the mount point is `/mnt/portableStorage` (see the `MOUNTPOINTS` column).
 

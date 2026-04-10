@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-09"
+lastupdated: "2026-04-10"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -72,7 +72,7 @@ The migration process can begin when you complete the prerequisites and planned 
 
 Document your existing Classic virtual server instance configuration:
 
-Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discovery) for all the different infrastructure and application aspects that include:
+Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure) for all the different infrastructure and application aspects that include:
 
 * Virtual server instance specifications (CPU, RAM, storage)
 * Operating system and version
@@ -98,7 +98,7 @@ Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discovery) for 
 | Bare Metal | Dedicated Host or virtual server instance | Consider dedicated hosts for isolation |
 {: caption="Classic to VPC resource mapping" caption-side="bottom"}
 
-Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-compute_migrate) for various options and considerations.
+Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute) for various options and considerations.
 
 ### Designing your VPC architecture
 {: #design-vpc}
@@ -160,7 +160,7 @@ Assign a floating IP to your virtual server instance if you need inbound public 
 ### Step 7: Migrate data and applications
 {: #migrate-data}
 
-Now that your {{site.data.keyword.vpc_short}} virtual server instance is running, migrate your data and applications. Rebuild your application and all its dependencies by running your continuous deployment (CD) pipeline. Migrate your data by using backup and restore or application-specific strategies (for example, database migration). Refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-storage-migrate) for details.
+Now that your {{site.data.keyword.vpc_short}} virtual server instance is running, migrate your data and applications. Rebuild your application and all its dependencies by running your continuous deployment (CD) pipeline. Migrate your data by using backup and restore or application-specific strategies (for example, database migration). Refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-data-migration-classic-to-vpc) for details.
 
 ### Step 8: Update DNS and networking
 {: #update-dns}

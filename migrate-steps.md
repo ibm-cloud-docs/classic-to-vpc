@@ -3,7 +3,7 @@
 copyright:
   years: 2026, 2026
 
-lastupdated: "2026-04-07"
+lastupdated: "2026-04-10"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -174,7 +174,7 @@ ibmcloud is key-create vpc-key @~/.ssh/vpc_rsa.pub --resource-group-name prod-wo
 #### Selecting a virtual server instance profile
 {: #select-profile}
 
-Make a list of the available profiles, and select one that meets or exceeds your Classic virtual server instance specifications. Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-compute#locations-profiles) for more details.
+Make a list of the available profiles, and select one that meets or exceeds your Classic virtual server instance specifications. Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute#locations-profiles) for more details.
 
 #### Choosing an operating system image
 {: #choose-image}
@@ -266,7 +266,7 @@ Now that your VPC virtual server instance is running, migrate your data and appl
 #### Option 2: Data migration that uses rsync
 {: #rsync-migration}
 
-For data migration, refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-storage-migrate)
+For data migration, refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-data-migration-classic-to-vpc)
 
 #### Option 3: Database migration
 {: #database-migration}
