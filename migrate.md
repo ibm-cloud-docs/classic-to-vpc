@@ -19,7 +19,7 @@ The migration process moves virtual server instances from Classic infrastructure
 {: shortdesc}
 
 ## Understanding the migration process
-{: #migration-process-explaination}
+{: #migration-process-explanation}
 
 Migrating from Classic virtual server instance to {{site.data.keyword.vsi_is_full}} involves creating a basic VPC{{site.data.keyword.vpc_short}} landing zone and migrating over your virtual server instances from Classic to {{site.data.keyword.vpc_short}}.
 With this approach you can:
