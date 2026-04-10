@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-09"
+lastupdated: "2026-04-10"
 
 keywords: discovery, inventory
 
@@ -21,7 +21,7 @@ The first step in assessing your environment for migration is to understand what
 ## Template for capturing your classic infrastructure footprint
 {: #template-capturing-classic-infrasturcture-footprint}
 
-Many specialized tools are available to capture inventory and plan your migration. You can use a sample [template](media/docs/downloads/classic-to-vpc/Classic%20VSI%20Discovery%20Template.pdf) to get started by providing details of the account, compute, storage, and network configurations with high-level application details.
+Many specialized tools are available to capture inventory and plan your migration. You can use a sample [template](/media/docs/downloads/classic-to-vpc/Classic%20VSI%20Discovery%20Template.pdf) to get started by providing details of the account, compute, storage, and network configurations with high-level application details.
 
 ### Account planning for classic to VPC migration
 {: #account-planning}
@@ -31,12 +31,12 @@ Document your current account structure, including VRF, cloud service endpoints,
 ### Compute resources
 {: #compute-resources}
 
-Follow the instructions in [Discovery of Classic Compute Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discovery-of-classic-compute-resources) to identify and capture the compute configuration of the classic virtual servers in your account.
+Follow the instructions in [Discovery of Classic Compute Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-compute-resources) to identify and capture the compute configuration of the classic virtual servers in your account.
 
 ### Storage resources
 {: #storage-resources}
 
-Follow the instructions in [Discovery of Classic Storage Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discovery-of-classic-storage-resources) to identify and capture the information about classic storage volumes of in your account.
+Follow the instructions in [Discovery of Classic Storage Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-storage-resources) to identify and capture the information about classic storage volumes of in your account.
 
 ### Application information
 {: #application-information}
