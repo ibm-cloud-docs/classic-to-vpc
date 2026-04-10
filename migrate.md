@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-09"
+lastupdated: "2026-04-10"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -19,7 +19,7 @@ The migration process moves virtual server instances from Classic infrastructure
 {: shortdesc}
 
 ## Understanding the migration process
-{: #migration-process-explaination}
+{: #migration-process-explanation}
 
 Migrating from Classic virtual server instance to {{site.data.keyword.vsi_is_full}} involves creating a basic VPC{{site.data.keyword.vpc_short}} landing zone and migrating over your virtual server instances from Classic to {{site.data.keyword.vpc_short}}.
 With this approach you can:
@@ -72,7 +72,7 @@ The migration process can begin when you complete the prerequisites and planned 
 
 Document your existing Classic virtual server instance configuration:
 
-Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discovery) for all the different infrastructure and application aspects that include:
+Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure) for all the different infrastructure and application aspects that include:
 
 * Virtual server instance specifications (CPU, RAM, storage)
 * Operating system and version
@@ -98,7 +98,7 @@ Go through [Discovery](/docs/classic-to-vpc?topic=classic-to-vpc-discovery) for 
 | Bare Metal | Dedicated Host or virtual server instance | Consider dedicated hosts for isolation |
 {: caption="Classic to VPC resource mapping" caption-side="bottom"}
 
-Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-compute_migrate) for various options and considerations.
+Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute) for various options and considerations.
 
 ### Designing your VPC architecture
 {: #design-vpc}
@@ -157,12 +157,12 @@ You can optionally create and attach secondary volumes of both block storage or 
 
 Assign a floating IP to your virtual server instance if you need inbound public internet access.
 
-### Step 7: Migrate data and applications
+### Step 6: Migrate data and applications
 {: #migrate-data}
 
-Now that your {{site.data.keyword.vpc_short}} virtual server instance is running, migrate your data and applications. Rebuild your application and all its dependencies by running your continuous deployment (CD) pipeline. Migrate your data by using backup and restore or application-specific strategies (for example, database migration). Refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-storage-migrate) for details.
+Now that your {{site.data.keyword.vpc_short}} virtual server instance is running, migrate your data and applications. Rebuild your application and all its dependencies by running your continuous deployment (CD) pipeline. Migrate your data by using backup and restore or application-specific strategies (for example, database migration). Refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-data-migration-classic-to-vpc) for details.
 
-### Step 8: Update DNS and networking
+### Step 7: Update DNS and networking
 {: #update-dns}
 
 Update your DNS records to point to the new {{site.data.keyword.vpc_short}} virtual server instance:
@@ -172,7 +172,7 @@ Update your DNS records to point to the new {{site.data.keyword.vpc_short}} virt
 3. Consider using a reduced TTL during migration for quick rollback
 4. Update any firewall rules or security policies
 
-### Step 9: Test and validate
+### Step 8: Test and validate
 {: #test-validate}
 
 Thoroughly test your migrated application:
@@ -185,7 +185,7 @@ Thoroughly test your migrated application:
 
 
 
-### Step 10: Cutover and decommission
+### Step 9: Cutover and decommission
 {: #cutover}
 
 After you complete testing and confirm that the migration is successful, follow these steps:
@@ -254,5 +254,5 @@ Complete the following steps to finalize your migration and prepare for ongoing 
 * [VPC documentation](/docs/vpc)
 * [VPC CLI reference](/docs/vpc?topic=vpc-vpc-reference)
 * [VPC API reference](/apidocs/vpc)
-* [VPC Terraform provider](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs)
-* [IBM Cloud Architecture Center](https://www.ibm.com/architectures/hybrid)
+* [VPC Terraform provider](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}
+* [IBM Cloud Architecture Center](https://www.ibm.com/architectures/hybrid){: external}
