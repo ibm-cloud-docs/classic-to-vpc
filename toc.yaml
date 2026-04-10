@@ -1,0 +1,97 @@
+toc:
+  properties:
+    subcollection: classic-to-vpc
+    href: /docs/classic-to-vpc
+    path: classic-to-vpc
+    audience: solution
+    category: solution_docs
+    content-type: solution
+    product-page: /docs/classic-to-vpc/
+    use-case: ApplicationMigration, CloudMigration, ApplicationModernization, classic to vpc migration
+    description: Migration Guide for moving infrastructure and workloads from Classic to VPC.
+    label: Classic to VPC Migration
+  entries:
+  - navgroup:
+      id: overview
+      topics:
+      - topic: overview/about.md
+        navtitle: About Migration
+      - topic: overview/overview.md
+        navtitle: Overview of Classic to VPC Migration
+  - navgroup:
+      id: architecture
+      topics:
+      - link:
+          label: VPC Solution Tutorials
+          href: https://cloud.ibm.com/docs/vpc?group=solution-tutorials
+      - topicgroup:
+          label: Reference Architectures
+          topics:
+          - link:
+              label: Cloud foundation for VPC - Standard
+              href: https://cloud.ibm.com/docs/deployable-reference-architectures?topic=deployable-reference-architectures-vpc-fully-configurable
+  - navgroup:
+      id: plan
+      topics:
+      - topicgroup:
+          id: solutions
+          label: Different Migration Solutions
+          topics:
+          - topic: solutions.md
+            navtitle: Migration Solutions
+          - link:
+              label: VPC Plus Solution
+              href: https://cloud.ibm.com/docs/wanclouds-vpc-plus
+      - topic: prerequisites.md
+        navtitle: Prerequisites for Migration
+      - topicgroup:
+          id: discovery
+          label: Discover your Classic Infrastructure
+          topics:
+          - topic: discovery.md
+            navtitle: Discovery Overview
+          - topic: discovery-compute.md
+            navtitle: Discovery of Classic Compute Resources
+          - topic: discovery-storage.md
+            navtitle: Discovery of Classic Storage Resources
+  - navgroup:
+      id: howto
+      topics:
+      - topicgroup:
+          id: migrate
+          label: Migrate to VPC
+          topics:
+          - topicgroup:
+              id: classic-vsi-to-vpc
+              label: Set up your VPC and migrate
+              topics:
+              - topic: migrate.md
+                navtitle: Migrating from Classic virtual server instance to VPC virtual server instance
+              - topic: migrate-steps.md
+                navtitle: Setting up your VPC environment
+          - topic: compute_migrate.md
+            navtitle: Migration decisions for compute
+          - topic: storage-migrate.md
+            navtitle: Migrating data from IBM Cloud classic infrastructure to VPC
+          - topic: image_template_migration.md
+            navtitle: Migrating an image template to VPC
+  - navgroup:
+      id: help
+      topics:
+      - topicgroup:
+          id: troubleshoot-vpc
+          label: Troubleshooting
+          topics:
+          - topicgroup:
+              id: troubleshoot-vpc
+              label: Troubleshooting your VPC
+              topics:
+              - topic: troubleshooting-vpc/troubleshoot-vpc-internet-access.md
+                navtitle: Why can't my application access the internet?
+              - topic: troubleshooting-vpc/troubleshoot-vpc-perf.md
+                navtitle: Why is my application performance slower than classic virtual server instance?
+              - topic: troubleshooting-vpc/troubleshoot-vpc-ssh.md
+                navtitle: Why am I unable to connect to my Virtual Servers for VPC using SSH?
+              - link:
+                  label: Others
+                  href: https://cloud.ibm.com/docs/vpc?group=troubleshooting

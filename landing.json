@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "title": "Classic to VPC Migration",
+  "introduction": "Modernizing infrastructure and workloads is a primary motivation for migration from Classic Infrastructure to VPC. Moving to VPC enables running your workloads on the latest generation of hardware and improves scalability, agility and efficiency while reducing maintenance burdens.",
+  "product_page": "https://www.ibm.com/products/cloud/migrate",
+  "section_topics": {
+    "links": [
+      {
+        "title": "About Migration",
+        "href": "/docs/classic-to-vpc?topic=classic-to-vpc-about-migration-infra"
+      },
+      {
+        "title": "Overview",
+        "href": "/docs/classic-to-vpc?topic=classic-to-vpc-overview"
+      },
+      {
+        "title": "Migration Solutions",
+        "href": "/docs/classic-to-vpc?topic=classic-to-vpc-solutions"
+      }
+    ]
+  },
+  "section_highlights": [
+    {
+      "title": "Migrate to Cloud",
+      "description": "IBM Cloud offers the most open and secure public cloud for business, a next-generation hybrid multicloud platform, advanced data and AI capabilities, and deep enterprise expertise across 20 industries",
+      "href": "https://www.ibm.com/products/cloud/migrate",
+      "type": "white-paper"
+    }
+  ],
+  "section_architectures": [],
+  "section_updates": {
+    "view_more": "/docs/classic-to-vpc?topic=classic-to-vpc-overview",
+    "tiles": [
+      {
+        "date": "06 April 2026",
+        "title": "Migration approaches and considerations"
+      },
+      {
+        "date": "06 April 2026",
+        "title": "Migrating from Classic virtual server instance to VPC virtual server instance"
+      },
+      {
+        "date": "06 April 2026",
+        "title": "Migrating an image template to VPC"
+      }
+    ]
+  }
+}
