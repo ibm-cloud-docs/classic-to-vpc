@@ -75,6 +75,8 @@ toc:
             navtitle: Migrating data from IBM Cloud classic infrastructure to VPC
           - topic: image_template_migration.md
             navtitle: Migrating an image template to VPC
+          - topic: ibm-cloud-vpc-firewall-options.md
+            navtitle: Migrating to a virtual firewall in VPC
   - navgroup:
       id: help
       topics:
