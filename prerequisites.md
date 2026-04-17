@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-08"
+lastupdated: "2026-04-17"
 
 keywords: pre-requisites, classic-to-vpc, tools
 
@@ -35,7 +35,7 @@ You can find more information about plug-ins and command help in the [CLI refere
 ## Support and help
 {: #support-and-help}
 
-For support assistance or questions, refer to the [Support Center](/docs/account?topic=account-using-avatar&interface=ui).
+For support assistance or questions, refer to the [Support Center](/docs/support?topic=support-using-avatar).
 
 ### Quota increases
 {: #quota-increases}

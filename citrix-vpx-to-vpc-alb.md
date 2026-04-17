@@ -2,7 +2,7 @@
 
 copyright:
   years: 2025
-lastupdated: "2026-04-16"
+lastupdated: "2026-04-17"
 
 keywords: Citrix VPX, load balancer migration, ALB, application load balancer, VPC load balancer, classic to vpc migration
 
@@ -130,7 +130,7 @@ Before starting the migration, ensure you have:
 * Appropriate IAM permissions for VPC and load balancer management
 * Network connectivity between Classic and VPC (if running parallel deployment)
 
-For general prerequisites, see [Pre-requisites](/docs/classic-to-vpc?topic=classic-to-vpc-pre-requisites).
+For general prerequisites, see [Pre-requisites](/docs/classic-to-vpc?topic=classic-to-vpc-key-migration-prerequisites).
 
 ## Migration steps
 {: #migration-steps}
@@ -566,4 +566,4 @@ Use this checklist to ensure feature parity after migration:
 * [VPC Application Load Balancer API reference](/apidocs/vpc#list-load-balancers)
 * [IBM Cloud Secrets Manager documentation](/docs/secrets-manager)
 * [VPC security groups documentation](/docs/vpc?topic=vpc-using-security-groups)
-* [Citrix VPX to cloud-native migration patterns](https://www.ibm.com/architectures/hybrid)
+* [Citrix VPX to cloud-native migration patterns](https://www.ibm.com/think/architectures/patterns)

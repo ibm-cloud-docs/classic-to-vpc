@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-04-16"
+lastupdated: "2026-04-17"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -31,7 +31,7 @@ The following sections describe the characteristics, available solutions, and im
 
 {{site.data.keyword.vpc_short}} supports multiple firewall deployment patterns that provide different levels of availability, scalability, and operational complexity.
 
-| Feature | [Standalone](#standalone-deployment) | [Active/Active HA (Single Zone)](#active-active-ha-single-zone) | [Active/Passive HA (Single Zone)](#activepassive-ha-single-zone) | [Active/Passive HA (Multizone)](#activepassive-ha-multizone) | [Active/Active HA (Multizone)](#activeactive-ha-multizone) |
+| Feature | [Standalone](#standalone-deployment) | [Active/Active HA (Single Zone)](#active-active-single-zone) | [Active/Passive HA (Single Zone)](#active-passive-single-zone) | [Active/Passive HA (Multizone)](#active-passive-multizone) | [Active/Active HA (Multizone)](#active-active-multizone) |
 |---------|-------------------------------------|---------------------------------------------|----------------------------------------------|----------------------------------------------|---------------------------------------------|
 | **High Availability** | None | Load balanced | Single zone failover | Regional failover | Regional load balanced |
 | **Deployment Complexity** | Low | Medium | Medium | High | High |
