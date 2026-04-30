@@ -2,12 +2,12 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-04-17"
+lastupdated: "2026-04-30"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
 
-subcollection: dl
+subcollection: classic-to-vpc
 
 ---
 
@@ -526,7 +526,7 @@ appropriate deployment configuration.
 #### Virtual server instance profile selection
 {: #vsi-profile-selection}
 
-* **Profile Size**: Larger profiles provide higher bandwidth caps (see [x86-64 instance profiles](/docs/vpc?topic=vpc-profiles) and [Gen 4 profile examples](/docs/dl?topic=dl-vpc-firewall-options#gen4-vsi-profiles))
+* **Profile Size**: Larger profiles provide higher bandwidth caps (see [x86-64 instance profiles](/docs/vpc?topic=vpc-profiles) and [Gen 4 profile examples](#gen4-vsi-profiles)
 * **Bandwidth Pooling** (Gen 4 profiles only): Network bandwidth is pooled across all interfaces, allowing flexible allocation
 * **Pre-Gen 4 Profiles**: Bandwidth is equally divided across interfaces, not pooled
 * **Example**: A bx4-32x128 profile has 64 Gbps bandwidth cap that can be pooled across all interfaces (Gen 4)
