@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-04-30"
+lastupdated: "2026-05-05"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -32,7 +32,7 @@ The following sections describe the characteristics, available solutions, and im
 {{site.data.keyword.vpc_short}} supports multiple firewall deployment patterns that provide different levels of availability, scalability, and operational complexity.
 
 | Feature | [Standalone](#standalone-deployment) | [Active/Active HA (Single Zone)](#active-active-single-zone) | [Active/Passive HA (Single Zone)](#active-passive-single-zone) | [Active/Passive HA (Multizone)](#active-passive-multizone) | [Active/Active HA (Multizone)](#active-active-multizone) |
-|---------|-------------------------------------|---------------------------------------------|----------------------------------------------|----------------------------------------------|---------------------------------------------|
+| --------- | ------------------------------------- | --------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | --------------------------------------------- |
 | **High Availability** | None | Load balanced | Single zone failover | Regional failover | Regional load balanced |
 | **Deployment Complexity** | Low | Medium | Medium | High | High |
 | **Compute Options** | Virtual Server or Bare Metal | Virtual Server | Virtual Server or Bare Metal | Virtual Server | Virtual Server |
@@ -92,7 +92,7 @@ A single firewall instance without high availability. This deployment is suitabl
 The following table outlines the available standalone firewall solutions from leading vendors, along with their corresponding products and catalog links.
 
 | Vendor | Product | Catalog Link |
-|--------|---------|--------------|
+| -------- | --------- | -------------- |
 | Fortinet | FortiGate Next-Generation Firewall - Single VM | [Catalog](/catalog/content/ibm-fortigate-terraform-deploy-1f878ca9-069f-42ca-9ed9-5b461d4d5231-global) |
 | Palo Alto | VM-Series Firewall - BYOL | [Catalog](/catalog/content/ibmcloud-vmseries-1.9-6470816d-562d-4627-86a5-fe3ad4e94b30-global) |
 | Juniper | Next-Gen SASE Firewall - BYOL | [Catalog](/catalog/content/jnpr-nextgen-fw-vsrx-74b4b3ba-2a05-460d-afba-98e4d012f53a-global) |
@@ -488,7 +488,7 @@ For more information, see [Getting started with IBM Cloud Gateway Appliance](/do
 {: #classic-vs-vpc}
 
 | Aspect | IBM Cloud Classic | IBM Cloud VPC |
-|--------|-------------------|---------------|
+| -------- | ------------------- | --------------- |
 | **Network Architecture** | Layer 2 | Layer 3 SDN |
 | **Licensing** | IBM-licensed (except BYOL Gateway) | BYOL (IBM-licensed coming soon for Fortinet) |
 | **High Availability** | A/P Single Data Center Pod | Multiple HA patterns |
@@ -526,7 +526,7 @@ appropriate deployment configuration.
 #### Virtual server instance profile selection
 {: #vsi-profile-selection}
 
-* **Profile Size**: Larger profiles provide higher bandwidth caps (see [x86-64 instance profiles](/docs/vpc?topic=vpc-profiles) and [Gen 4 profile examples](#gen4-vsi-profiles)
+* **Profile Size**: Larger profiles provide higher bandwidth caps (see [x86-64 instance profiles](/docs/vpc?topic=vpc-profiles)) and [Gen 4 profile examples](#gen4-vsi-profiles)
 * **Bandwidth Pooling** (Gen 4 profiles only): Network bandwidth is pooled across all interfaces, allowing flexible allocation
 * **Pre-Gen 4 Profiles**: Bandwidth is equally divided across interfaces, not pooled
 * **Example**: A bx4-32x128 profile has 64 Gbps bandwidth cap that can be pooled across all interfaces (Gen 4)
@@ -567,7 +567,7 @@ appropriate deployment configuration.
 Balanced Profiles (bx4):
 
 | Profile | vCPU | Memory (GiB) | Bandwidth Cap (Gbps) |
-|---------|------|--------------|----------------------|
+| --------- | ------ | -------------- | ---------------------- |
 | bx4-8x32 | 8 | 32 | 16 |
 | bx4-16x64 | 16 | 64 | 32 |
 | bx4-32x128 | 32 | 128 | 64 |
