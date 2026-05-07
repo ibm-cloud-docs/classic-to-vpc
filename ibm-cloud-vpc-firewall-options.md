@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-05"
+lastupdated: "2026-05-07"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -22,11 +22,112 @@ Firewall deployment options are available for {{site.data.keyword.vpc_full}}, in
 active/active high availability configurations across single and multiple availability zones.
 {: shortdesc}
 
-{{site.data.keyword.vpc_short}} is a Layer 3 Software-Defined Network (SDN) that offers flexible firewall deployment options to meet various security and availability requirements. Unlike IBM Cloud Classic infrastructure, which uses a Layer 2 network architecture, VPC uses a Layer 3 SDN architecture with multiple firewall implementation patterns.
+{{site.data.keyword.vpc_short}} is a Layer 3 Software-Defined Network (SDN) that offers flexible firewall deployment options to meet various security and availability requirements. Unlike IBM Cloud Classic infrastructure, which uses a Layer 2 network architecture, VPC uses a Layer 3 SDN architecture with multiple firewall implementation patterns. Before selecting a deployment pattern, it's important to understand whether a dedicated firewall appliance is necessary for your workload.
+
+## What firewall options should be considered when migrating?
+{: #firewall-migration-considerations}
+
+When migrating from IBM Cloud Classic to VPC, understanding your firewall requirements is critical to designing the right security architecture. This section helps you evaluate whether you need a firewall in VPC and what capabilities to consider.
+
+### Do you need a firewall in VPC?
+{: #do-you-need-firewall}
+
+VPC includes built-in security features that may be sufficient for some workloads:
+
+* **Security Groups (SGs)**: Stateful firewalls that control traffic at the virtual server instance level. Use allow rules only; when inbound traffic is permitted, return traffic is automatically allowed. Multiple security groups can be associated with a single instance.
+* **Network Access Control Lists (NACLs)**: Stateless firewalls that control traffic at the subnet level. Support both allow and deny rules; inbound and outbound rules must be explicitly defined. Rules are processed in sequence.
+* **Public Gateway**: Enables outbound internet access; workloads are not reachable from the internet unless a floating IP or public load balancer is attached.
+
+For more information about security groups and NACLs, see [Security in your VPC](/docs/vpc?topic=vpc-security-in-your-vpc).
+
+**IBM Cloud managed security services:**
+
+For specific security needs, IBM Cloud offers managed services that might eliminate the need for a dedicated firewall appliance:
+
+* **[IBM Cloud Internet Services (CIS)](https://www.ibm.com/products/cloud-internet-services){: external}**: Provides Layer 7 (application layer) web application firewall (WAF), DDoS protection, global load balancing, and CDN capabilities. **If you only need application-layer protection, CIS is the preferred solution** as it's fully managed and doesn't require firewall appliance deployment.
+* **[VPN for VPC and Client VPN services](https://www.ibm.com/products/vpn-for-vpc){: external}**: Provides site-to-site and client-to-site VPN connectivity without requiring a firewall appliance.
+
+**When VPC native security may be sufficient:**
+
+* Simple workload isolation requirements
+* Basic ingress/egress control at network and instance levels
+* No advanced inspection or logging requirements
+* Application-layer protection is handled by IBM Cloud Internet Services
+* VPN connectivity is handled by VPC VPN service
+
+### When to consider a dedicated firewall
+{: #when-to-consider-dedicated-firewall}
+
+Many enterprise and regulated workloads require capabilities beyond VPC's native security features. The following sections describe common requirements and considerations that can influence the decision to deploy a dedicated firewall.
+
+These items are not a checklist. The presence of one or more requirements does not automatically indicate the need for a firewall appliance. Consider these factors alongside VPC native security features and managed services when determining whether additional controls are required.
+
+#### Compliance and regulatory requirements
+{: #compliance-requirements}
+
+* **PCI DSS, HIPAA, SOC 2**: Many compliance frameworks mandate next-generation firewall (NGFW) capabilities.
+* **Audit logging**: Detailed traffic logs for integration with security information and event management (SIEM) systems such as QRadar. VPC provides native logging capabilities, including [flow logs](/docs/vpc?topic=vpc-flow-logs) for network-level visibility and [data path logging for application load balancers](/docs/vpc?topic=vpc-datapath-logging), which can support audit and monitoring requirements depending on the level of detail and retention needed.
+* **Periodic security reports**: Financial institutions and regulated industries require comprehensive security reporting every 6-12 months.
+* **SNMP traps and alerting**: Integration with on-premises monitoring systems for real-time security event notification.
+
+#### Advanced security capabilities
+{: #advanced-security-capabilities}
+
+* **Intrusion Prevention System (IPS)**: Deep packet inspection to detect and block malicious traffic patterns.
+* **Intrusion Detection System (IDS)**: Monitor and alert on suspicious network activity.
+* **Application-layer inspection**: Inspect traffic beyond Layer 4 (ports and protocols).
+* **Command and Control (C&C) blocking**: Automatically block connections to known malicious servers.
+* **Data loss prevention (DLP)**: Inspect and control sensitive data leaving your network.
+* **URL filtering**: Control access to websites by category or specific URLs.
+* **Quality of Service (QoS)**: Prioritize critical application traffic.
+
+#### Operational requirements
+{: #operational-requirements}
+
+* **Centralized security policy management**: Manage security rules across multiple VPCs from a single point.
+* **Multi-tenant isolation**: Separate security zones for different applications or customers.
+* **Advanced logging and forensics**: Detailed traffic logs with source/destination IP, ports, and application identification.
+* **Automation capabilities**: API-driven security policy updates and threat response.
+* **Disaster recovery**: Active/passive or active/active high availability across zones or regions.
+
+#### Network architecture requirements
+{: #network-architecture-requirements}
+
+* **Transit VPC (hub and spoke)**: Centralized connectivity pattern for traffic between multiple VPCs. See [Transit VPC hub-and-spoke architecture](/docs/vpc?topic=vpc-transit-hub-spoke) for more information. This pattern can optionally serve as a centralized security inspection point when advanced controls are required.
+* **Hybrid cloud connectivity**: Secure connections between VPC and on-premises data centers.
+* **First-hop security**: Terminate and inspect all traffic (ingress and egress) at a single security checkpoint.
+* **Zone-based security**: Create security zones (DMZ, application tier, database tier) with controlled traffic flows.
+
+### Classic infrastructure firewall context
+{: #classic-firewall-context}
+
+In IBM Cloud Classic infrastructure, firewalls serve a critical role due to the Layer 2 network architecture:
+
+* **VLAN segregation**: Classic uses VLANs to separate traffic; transit VLANs connect gateways to public/private networks.
+* **Gateway routing**: Resources are associated with VLANs that route through gateway appliances (like vFSA) for protection.
+* **Untagged service networks**: Transit VLANs act as service networks where packets are untagged.
+* **Tagged workload networks**: Automatic and Premium VLANs carry tagged traffic with subnets and IPs for workloads.
+
+**Key difference in VPC:**
+
+VPC uses a Layer 3 Software-Defined Network (SDN) architecture, which provides more flexible security options. However, the advanced security capabilities that firewalls provide remain essential for many enterprise workloads.
+
+### Decision framework
+{: #firewall-decision-framework}
+
+Use the following framework to determine your firewall requirements:
+
+1. **Start with requirements**: Document your compliance, security, and operational requirements
+1. **Evaluate VPC native security**: Determine if security groups, NACLs, and public gateways meet your needs
+1. **Consider IBM Cloud managed services**:
+   - For application-layer (Layer 7) protection only: Use [IBM Cloud Internet Services (CIS)](https://www.ibm.com/products/cloud-internet-services){: external}
+   - For VPN connectivity: Use [VPC VPN service](https://www.ibm.com/products/vpn-for-vpc){: external}
+1. **Identify gaps**: List capabilities that VPC native security and managed services cannot provide
+1. **Select firewall pattern**: If a network firewall appliance is required, choose the appropriate [deployment pattern](#deployment-options) based on availability and performance needs
 
 The following sections describe the characteristics, available solutions, and implementation options for each firewall deployment pattern.
 
-## Comparision of firewall deployment options
+## Comparison of firewall deployment options
 {: #firewall-deployment-option-comparison}
 
 {{site.data.keyword.vpc_short}} supports multiple firewall deployment patterns that provide different levels of availability, scalability, and operational complexity.
@@ -35,9 +136,9 @@ The following sections describe the characteristics, available solutions, and im
 | --------- | ------------------------------------- | --------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | --------------------------------------------- |
 | **High Availability** | None | Load balanced | Single zone failover | Regional failover | Regional load balanced |
 | **Deployment Complexity** | Low | Medium | Medium | High | High |
-| **Compute Options** | Virtual Server or Bare Metal | Virtual Server | Virtual Server or Bare Metal | Virtual Server | Virtual Server |
-| **Failover Method** | N/A | Network Load Balancer | Virtual Server: SDN Connector /n Bare Metal: Virtual Network Floating | SDN Connector | BGP over GRE |
-| **SDN Connector Required** | No | No (uses NLB) | Virtual Server: Yes (Fortinet native) /n Bare Metal: No (uses Virtual Server) | Yes (Fortinet native) | No (uses BGP) |
+| **Compute Options** | Virtual server instance or bare metal server | Virtual server instance | Virtual server instance or bare metal server | Virtual server instance | Virtual server instance |
+| **Failover Method** | N/A | Network Load Balancer | Virtual server instance: SDN Connector \n Bare metal server: Virtual Network Floating | SDN Connector | BGP over GRE |
+| **SDN Connector Required** | No | No (uses NLB) | Virtual server instance: Yes (Fortinet native) \n Bare metal server: No (uses virtual server instance) | Yes (Fortinet native) | No (uses BGP) |
 | **Performance** | [See Performance Factors](#performance-factors) | [See Performance Factors](#performance-factors) | [See Performance Factors](#performance-factors) | [See Performance Factors](#performance-factors) | [See Performance Factors](#performance-factors) |
 | **Public Address Range Support** | Yes | Yes | Yes | Yes (Fortinet native integration) | Yes |
 | **Supported Vendors** | All | All | Fortinet (native), Others (custom code) | Fortinet (native), Others (custom code) | BGP-capable vendors |
@@ -92,12 +193,11 @@ A single firewall instance without high availability. This deployment is suitabl
 The following table outlines the available standalone firewall solutions from leading vendors, along with their corresponding products and catalog links.
 
 | Vendor | Product | Catalog Link |
-| -------- | --------- | -------------- |
-| Fortinet | FortiGate Next-Generation Firewall - Single VM | [Catalog](/catalog/content/ibm-fortigate-terraform-deploy-1f878ca9-069f-42ca-9ed9-5b461d4d5231-global) |
-| Palo Alto | VM-Series Firewall - BYOL | [Catalog](/catalog/content/ibmcloud-vmseries-1.9-6470816d-562d-4627-86a5-fe3ad4e94b30-global) |
-| Juniper | Next-Gen SASE Firewall - BYOL | [Catalog](/catalog/content/jnpr-nextgen-fw-vsrx-74b4b3ba-2a05-460d-afba-98e4d012f53a-global) |
-| Check Point | CloudGuard Network Security Firewall | [Catalog](/catalog/content/check-point-cloudguard-network-security-firewall-with-threat-prevention-1f1f50fe-e41d-4715-9ba6-02d37d76596c-global) |
-| F5 | BIG-IP Virtual Edition for VPC | [Catalog](/catalog/content/ibmcloud_schematics_bigip_multinic_declared-1.0-d33f1544-e938-478a-b0dd-d883370f08d0-global) |
+|--------|---------|--------------|
+| Fortinet | FortiGate Next-Generation Firewall - Single VM | [Catalog](/catalog/content/ibm-fortigate-terraform-deploy-1f878ca9-069f-42ca-9ed9-5b461d4d5231-global) | 
+| Juniper | Next-Gen SASE Firewall - BYOL | [Catalog](/catalog/content/jnpr-nextgen-fw-vsrx-74b4b3ba-2a05-460d-afba-98e4d012f53a-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPXZtLXNlcmllcyUyNTIwZmlyZXdhbGwlMjUyMGJ5b2wjc2VhcmNoX3Jlc3VsdHM%3D) |
+| Check Point | CloudGuard Network Security Firewall | [Catalog](/catalog/content/check-point-cloudguard-network-security-firewall-with-threat-prevention-1f1f50fe-e41d-4715-9ba6-02d37d76596c-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPWNoZWNrJTI1MjBwb2ludCNzZWFyY2hfcmVzdWx0cw%3D%3D) |
+| F5 | BIG-IP Virtual Edition for VPC | [Catalog](/catalog/content/ibmcloud_schematics_bigip_multinic_declared-1.0-d33f1544-e938-478a-b0dd-d883370f08d0-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPUY1I3NlYXJjaF9yZXN1bHRz) |
 {: caption="Available standalone firewall solutions" caption-side="bottom"}
 
 **Best for:**
@@ -130,14 +230,14 @@ This deployment provides zone-level redundancy for production workloads.
 
 - Zone-level high availability
 - Automatic failover using SDN Connector
-- Supports virtual server instance and Bare Metal deployments
+- Supports virtual server instance and bare metal server deployments
 - Tested with Fortinet and Palo Alto
 
 **Available solutions:**
 
 | Vendor | Product | Catalog Link |
 |--------|---------|--------------|
-| Fortinet | FortiGate Next-Generation Firewall - A/P HA | [Catalog](/catalog/content/ibm-fortigate-AP-HA-terraform-deploy-5dd3e4ba-c94b-43ab-b416-c1c313479cec-global) |
+| Fortinet | FortiGate Next-Generation Firewall - A/P HA | [Catalog](/catalog/content/ibm-fortigate-AP-HA-terraform-deploy-5dd3e4ba-c94b-43ab-b416-c1c313479cec-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPUZvcnRpZ2F0ZSNzZWFyY2hfcmVzdWx0cw%3D%3D) |
 {: caption="Available Active/Passive HA (Single Zone) solutions" caption-side="bottom"}
 
 Implementation options are as follows:
@@ -165,7 +265,7 @@ Two firewall instances in an active/passive configuration across multiple availa
 
 | Vendor | Product | Catalog Link |
 |--------|---------|--------------|
-| Fortinet | FortiGate Next-Generation Firewall - Cross Zone HA | [Catalog](/catalog/content/ibm-fortigate-cross-zone-ha-par-terraform-deploy-9a7c26d7-83c6-45bc-b145-e65d54c2d009-global) |
+| Fortinet | FortiGate Next-Generation Firewall - Cross Zone HA | [Catalog](/catalog/content/ibm-fortigate-AP-HA-terraform-deploy-5dd3e4ba-c94b-43ab-b416-c1c313479cec-global?catalog_query=aHR0cHM6Ly9jbG91ZC5pYm0uY29tL2NhdGFsb2c%2Fc2VhcmNoPUZvcnRpZ2F0ZSNzZWFyY2hfcmVzdWx0cw%3D%3D) |
 {: caption="Available Active/Passive HA (Multizone) solutions" caption-side="bottom"}
 
 **Best for:**
@@ -212,14 +312,14 @@ BGP over GRE tunnels provides dynamic routing and automatic failover across zone
 
 The SDN Connector is a critical component that enables automatic failover in Active/Passive HA configurations for virtual server instance-based deployments. It monitors the firewall cluster and automatically updates VPC routing tables when failover occurs.
 
-Bare metal deployments do "not" use SDN Connector. They use virtual network floating interfaces instead.
+Bare metal deployments do not use SDN Connector. They use virtual network floating interfaces instead.
 {: important}
 
 #### Vendor support (virtual server instance only)
 {: #sdn-connector-vendor-support}
 
-* **Fortinet FortiGate**: Native SDN Connector integration included in IBM Cloud VPC images
-* **Other Vendors**: Must implement custom automation or use manual failover processes
+* **Fortinet FortiGate**: Native SDN Connector integration included in IBM Cloud VPC images.
+* **Other Vendors**: Must implement custom automation or use manual failover processes.
 
 #### How it works
 {: #sdn-connector-how-it-works}
@@ -248,7 +348,7 @@ Bare metal deployments do "not" use SDN Connector. They use virtual network floa
 - No external monitoring required
 - Integrated with firewall HA mechanism (Fortinet only)
 
-### Bare Metal Servers
+### Bare metal servers
 {: #bare-metal-servers-reference}
 
 Bare metal servers provide dedicated hardware resources but require significant manual configuration and management.
@@ -269,7 +369,7 @@ Important Limitations
 
 Technical Details
 
-:   - **Key Difference**: Does "not" require SDN Connector - uses virtual network floating interface technology
+:   - **Key Difference**: Does not require SDN Connector - uses virtual network floating interface technology
     - **Tested Vendors**: Fortinet (PCI Passthrough and macvtap), Palo Alto (macvtap)
 
 For more information, see [Virtual firewalls on VPC Bare Metal servers](/docs/pattern-transit-vpc?topic=pattern-transit-vpc-transit-vpc#Virtual-firewall-Appliances-on-VPC-Bare-Metals).
@@ -290,8 +390,8 @@ zone-specific routing requirements and the need to update zone bindings.
 
 **Vendor support:**
 
-* **Fortinet FortiGate**: Native SDN Connector with cross-zone support and automatic public address range zone binding updates
-* **Other Vendors**: Must implement custom automation for cross-zone failover
+* **Fortinet FortiGate**: Native SDN Connector with cross-zone support and automatic public address range zone binding updates.
+* **Other Vendors**: Must implement custom automation for cross-zone failover.
 
 **Failover process:**
 
@@ -333,8 +433,8 @@ Public address ranges enable public-facing applications to preserve source IP ad
 
 **Vendor support:**
 
-* **Fortinet FortiGate**: Native Public Address Range integration with automatic zone binding updates during cross-zone failover (FortiOS 7.6.3+)
-* **Other Vendors**: Can use public address ranges but must implement custom automation for zone binding updates
+* **Fortinet FortiGate**: Native Public Address Range integration with automatic zone binding updates during cross-zone failover (FortiOS 7.6.3+).
+* **Other Vendors**: Can use public address ranges but must implement custom automation for zone binding updates.
 
 **Use cases:**
 
@@ -492,14 +592,13 @@ For more information, see [Getting started with IBM Cloud Gateway Appliance](/do
 | **Network Architecture** | Layer 2 | Layer 3 SDN |
 | **Licensing** | IBM-licensed (except BYOL Gateway) | BYOL (IBM-licensed coming soon for Fortinet) |
 | **High Availability** | A/P Single Data Center Pod | Multiple HA patterns |
-| **Deployment Flexibility** | Physical and Bare Metal | Virtual (Virtual Server Instance and Bare Metal) |
+| **Deployment Flexibility** | Physical and bare metal | Virtual (virtual server instance and bare metal server) |
 {: caption="Key differences between Classic and VPC infrastructure" caption-side="bottom"}
 
 ### Migration considerations for gateway devices
 {: #migration-considerations}
 
-1. **Architecture Review:** VPC's Layer 3 SDN requires different network
-   design patterns
+1. **Architecture Review:** VPC's Layer 3 SDN requires different network design patterns
 1. **Licensing:** Plan for BYOL requirements or wait for IBM-licensed options
 1. **High Availability:** Choose appropriate HA pattern based on requirements
 1. **Automation:** Leverage Terraform and APIs for deployment
@@ -518,10 +617,10 @@ appropriate deployment configuration.
 #### Firewall license
 {: #firewall-license-performance}
 
-* **vCPU Count**: Firewall vendor licenses typically limit throughput based on vCPU count
-* **Gating Factor**: The license vCPU limit is usually the primary constraint on performance
-* **Example**: A 4-vCPU firewall license will limit throughput regardless of virtual server instance profile size
-* **Recommendation**: Match virtual server instance profile vCPU count to firewall license vCPU entitlement
+* **vCPU Count**: Firewall vendor licenses typically limit throughput based on vCPU count.
+* **Gating Factor**: The license vCPU limit is usually the primary constraint on performance.
+* **Example**: A 4-vCPU firewall license will limit throughput regardless of virtual server instance profile size.
+* **Recommendation**: Match virtual server instance profile vCPU count to firewall license vCPU entitlement.
 
 #### Virtual server instance profile selection
 {: #vsi-profile-selection}
@@ -529,29 +628,29 @@ appropriate deployment configuration.
 * **Profile Size**: Larger profiles provide higher bandwidth caps (see [x86-64 instance profiles](/docs/vpc?topic=vpc-profiles)) and [Gen 4 profile examples](#gen4-vsi-profiles)
 * **Bandwidth Pooling** (Gen 4 profiles only): Network bandwidth is pooled across all interfaces, allowing flexible allocation
 * **Pre-Gen 4 Profiles**: Bandwidth is equally divided across interfaces, not pooled
-* **Example**: A bx4-32x128 profile has 64 Gbps bandwidth cap that can be pooled across all interfaces (Gen 4)
+* **Example**: A bx4-32x128 profile has 64 Gbps bandwidth cap that can be pooled across all interfaces (Gen 4) 
 
 #### Network interface configuration
 {: #network-interface-config}
 
-* **Number of Interfaces**: More interfaces may impact available bandwidth per interface (pre-Gen 4)
-* **Gen 4 Advantage**: Bandwidth pooling eliminates per-interface division
-* **Recommendation**: Use Gen 4 profiles for firewall deployments when available
+* **Number of Interfaces**: More interfaces may impact available bandwidth per interface (pre-Gen 4).
+* **Gen 4 Advantage**: Bandwidth pooling eliminates per-interface division.
+* **Recommendation**: Use Gen 4 profiles for firewall deployments when available.
 
 #### Network Load Balancer (Active/Active)
 {: #nlb-active-active}
 
-* **NLB Throughput**: Network load balancer has its own throughput limits
-* **Route Mode**: Lower latency than application load balancers, efficient Layer 4 routing
-* **Scaling**: Distribute load across multiple firewall instances for higher aggregate throughput
+* **NLB Throughput**: Network load balancer has its own throughput limits.
+* **Route Mode**: Lower latency than application load balancers, efficient Layer 4 routing.
+* **Scaling**: Distribute load across multiple firewall instances for higher aggregate throughput.
 
-#### Bare Metal Servers
+#### Bare metal servers
 {: #bare-metal-performance}
 
-* **High Network Throughput**: Dedicated hardware resources provide consistent high performance
-* **Virtual Network Floating Interfaces**: Automatic failover without SDN Connector overhead
-* **Significant Limitations**: Requires manual hypervisor and VM configuration, monthly billing only, limited scaling flexibility, customer-managed OS and software
-* **Recommendation**: Consider virtual server instance deployments first due to operational simplicity and flexibility
+* **High Network Throughput**: Dedicated hardware resources provide consistent high performance.
+* **Virtual Network Floating Interfaces**: Automatic failover without SDN Connector overhead.
+* **Significant Limitations**: Requires manual hypervisor and VM configuration, monthly billing only, limited scaling flexibility, customer-managed OS and software.
+* **Recommendation**: Consider virtual server instance deployments first due to operational simplicity and flexibility.
 
 #### Key recommendations
 {: #performance-recommendations}
@@ -584,7 +683,7 @@ Gen 4 profiles feature bandwidth pooling across all interfaces. For complete pro
 - **Standalone:** Lowest cost, no redundancy
 - **Single Zone HA:** Moderate cost, good balance
 - **Multizone HA:** Higher cost, maximum availability
-- **Virtual server instance versus Bare Metal:** Virtual server instances offer hourly billing and operational flexibility; bare metal requires monthly billing and manual management.
+- **Virtual server instance versus bare metal server:** Virtual server instances offer hourly billing and operational flexibility; bare metal servers require monthly billing and manual management.
 
 ## Additional resources
 {: #additional-resources}
@@ -594,7 +693,6 @@ Gen 4 profiles feature bandwidth pooling across all interfaces. For complete pro
 
 - [Transit VPC Pattern](/docs/pattern-transit-vpc?topic=pattern-transit-vpc-transit-vpc)
 - [VPC Networking Overview](/docs/vpc?topic=vpc-about-networking-for-vpc)
-- [IBM Cloud Catalog - Network Security](/catalog?category=network_security)
 
 ### Support
 {: #ibm-support}
