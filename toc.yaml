@@ -77,8 +77,6 @@ toc:
             navtitle: Migrating an image template to VPC
           - topic: citrix-vpx-to-vpc-alb.md
             navtitle: Migrating from VPX to VPC ALB
-          - topic: ibm-cloud-vpc-firewall-options.md
-            navtitle: Migrating to a virtual firewall in VPC
   - navgroup:
       id: help
       topics:
