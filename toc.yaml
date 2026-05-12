@@ -75,6 +75,8 @@ toc:
             navtitle: Migrating data from IBM Cloud classic infrastructure to VPC
           - topic: image_template_migration.md
             navtitle: Migrating an image template to VPC
+          - topic: citrix-vpx-to-vpc-alb.md
+            navtitle: Migrating from VPX to VPC ALB
   - navgroup:
       id: help
       topics:

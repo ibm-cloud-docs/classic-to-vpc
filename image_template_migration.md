@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-09"
+  years: 2026
+lastupdated: "2026-05-11"
 
 keywords: migrate image template, image template, import image to vpc infrastructure, migrate virtual server, migrate instance
 
@@ -88,7 +88,7 @@ Complete the following customizations to prepare your image for the {{site.data.
 Follow the instructions in [Creating a Linux custom image](/docs/vpc?topic=vpc-create-linux-custom-image) to customize on your Linux instance. Your instance needs to meet the following requirements.
    * The following arguments are present on the kernel command line: `nomodeset`, `nofb`, `vga=normal`, `console=ttyS0`.
    * [Virtio drivers](/docs/vpc?topic=vpc-create-linux-custom-image#virtio-drivers) are installed, plus any code that is needed by Virtio.
-   * Your image is [cloud-init enabled](/docs/vpc?topic=vpc-create-linux-custom-image#cloud-init). If your instance is already using cloud-init, then you need to reset its cloud-init state. Follow the [cloud-init clean instructions](https://cloudinit.readthedocs.io/en/latest/reference/cli.html#clean){: external} to remove all cloud-init artifacts and allow it to rerun all stages on bootup.
+   * Your image is [cloud-init enabled](/docs/vpc?topic=vpc-create-linux-custom-image#cloud-init). If your instance is already using cloud-init, then you need to reset its cloud-init state. Follow the [cloud-init clean instructions](https://docs.cloud-init.io/en/latest/reference/cli.html#clean){: external} to remove all cloud-init artifacts and allow it to rerun all stages on bootup.
    * For any auxiliary storage volumes that are mounted, you must include the _fstab_ entry `nofail`.
 
 #### Customizing a Windows&reg; instance

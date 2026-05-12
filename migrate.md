@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-10"
+  years: 2026
+lastupdated: "2026-05-11"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -143,7 +143,7 @@ Allowing all outbound traffic is usually set by default and often required for s
 {: note}
 
 ### Step 3: Create the VPC virtual server instance
-{: #create-vpc-virtual server instance}
+{: #create-vpc-virtual-server-instance}
 
 Create {{site.data.keyword.vpc_short}} virtual server by selecting an appropriate profile that matches or exceeds your classic virtual server instance resources. Also, create a matching operating system image that is at the most recent supported version. Confirm that you have an SSH key available.
 
@@ -255,4 +255,4 @@ Complete the following steps to finalize your migration and prepare for ongoing 
 * [VPC CLI reference](/docs/vpc?topic=vpc-vpc-reference)
 * [VPC API reference](/apidocs/vpc)
 * [VPC Terraform provider](https://registry.terraform.io/providers/IBM-Cloud/ibm/latest/docs){: external}
-* [IBM Cloud Architecture Center](https://www.ibm.com/architectures/hybrid){: external}
+* [IBM Cloud Architecture Center](https://www.ibm.com/think/architectures/patterns){: external}

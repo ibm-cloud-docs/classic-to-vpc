@@ -1,9 +1,9 @@
 ---
 
 copyright:
-  years: 2026, 2026
+  years: 2026
 
-lastupdated: "2026-04-10"
+lastupdated: "2026-05-11"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -153,7 +153,7 @@ ibmcloud is security-group-rule-add ssh-sg inbound tcp --port-min 22 --port-max 
 ```
 
 ### Preparing for virtual server instance creation
-{: #preparing-virtual server instance-creation}
+{: #preparing-virtual-server-instance-creation}
 {: #step-4}
 
 Before you create a virtual server instance, complete the required preparation steps for a successful deployment.
@@ -188,7 +188,7 @@ ibmcloud is images --visibility public
 Select an image that matches your Classic virtual server instance OS, preferably the most recent supported version.
 
 ### Step 4: Create the VPC virtual server instance from the CLI
-{: #create-vpc-virtual server instance-cli}
+{: #create-vpc-virtual-server-instance-cli}
 {: cli}
 
 Create your virtual server instance by configuring all required components.
@@ -202,7 +202,7 @@ ibmcloud is instance-create web-server-1 production-vpc us-south-1 bx2-2x8 subne
 ```
 
 ### Creating the VPC virtual server instance in the console
-{: #create-vpc-virtual server instance-ui}
+{: #create-vpc-virtual-server-instance-ui}
 {: ui}
 {: #step-5}
 

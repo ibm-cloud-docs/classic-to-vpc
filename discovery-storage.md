@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-10"
+lastupdated: "2026-04-17"
 
 keywords: storage, classic virtual server instance
 
@@ -917,7 +917,7 @@ ibmcloud sl vs storage VSI_ID
 
 Refer to the **Portable Storage** section in the output to find its **description**, **capacity**, and **location** of the portable storage attached to the virtual server instance.
 
-Example output: Refer to [Example](#list-all-storage-attached-to-virtual-servers-cli-example)
+Example output: Refer to [Example](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-storage-resources&interface=cli#list-all-storage-attached-to-virtual-servers-cli-example)
 
 With the API -
 

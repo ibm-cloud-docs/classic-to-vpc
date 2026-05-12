@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026, 2026
-lastupdated: "2026-04-09"
+lastupdated: "2026-04-17"
 
 keywords: compute, classic virtual server instance
 
@@ -113,7 +113,7 @@ This command returns a list of virtual server instances that are provisioned on 
 You need to meet the following requirements:
 
 - SoftLayer API credentials (username and API key).
-  - To get started with SoftLayer API credentials, follow the official {{site.data.keyword.cloud_notm}} guide to [Managing classic infrastructure API keys](/docs/account?topic=account-classic_keys).
+    - To get started with SoftLayer API credentials, follow the official {{site.data.keyword.cloud_notm}} guide to [Managing classic infrastructure API keys](/docs/iam?topic=iam-classic_keys).
 - Install `curl` on your system.
 - Use `jq` for parsing and masking JSON output.
 
