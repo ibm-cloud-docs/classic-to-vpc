@@ -77,6 +77,8 @@ toc:
             navtitle: Migrating an image template to VPC
           - topic: citrix-vpx-to-vpc-alb.md
             navtitle: Migrating from VPX to VPC ALB
+          - topic: directlink-1-to-2-migration.md
+            navtitle: Migrating from Direct Link on Classic (1.0) to Direct Link (2.0)
   - navgroup:
       id: help
       topics:
