@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-09"
+  years: 2026
+lastupdated: "2026-06-10"
 
 keywords: migration solutions, classic to vpc migration
 
@@ -113,3 +113,5 @@ What RackWare RMM delivers:
 * Seamless migration of physical, virtual, and legacy systems into {{site.data.keyword.vpc_short}} environments
 * Flexible DR and failover solutions across {{site.data.keyword.vpc_short}}, and {{site.data.keyword.bm_is_full}}
 * Unified hybrid cloud control with cost-optimized scaling and provisioning
+
+For more information, see [Rackware](https://cloud.ibm.com/catalog?search=rackware#search_results) {: external}
