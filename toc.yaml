@@ -79,6 +79,8 @@ toc:
             navtitle: Migrating from VPX to VPC ALB
           - topic: directlink-1-to-2-migration.md
             navtitle: Migrating from Direct Link on Classic (1.0) to Direct Link (2.0)
+          - topic: ibm-cloud-vpc-firewall-options.md
+            navtitle: Migrating to a virtual firewall in VPC
   - navgroup:
       id: help
       topics:
