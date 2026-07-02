@@ -1215,6 +1215,8 @@ Virtual server instance versus bare metal server
 
 - [Palo Alto VM-Series on IBM Cloud: Bare-Metal HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/07/01/paloalto-vmseries-on-ibm-cloud-bm-ap){: external}
 
+- [Fortinet vFSA on IBM Cloud: Bare-Metal HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/07/02/fortinet-vfsa-on-ibm-cloud-bm-ap){: external}
+
 ### IBM Cloud documentation
 {: #cloud-docs}
 
