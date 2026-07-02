@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-05-12"
+lastupdated: "2026-07-02"
 
 keywords: Citrix VPX, load balancer migration, ALB, application load balancer, VPC load balancer, classic to vpc migration
 
@@ -15,7 +15,7 @@ subcollection: classic-to-vpc
 # Migrating from Citrix VPX on IBM Cloud Classic to VPC Application Load Balancer
 {: #citrix-vpx-to-vpc-alb}
 
-Migrate your {{site.data.keyword.vpx_full_reg}} {{site.data.keyword.loadbalancer_short}} from {{site.data.keyword.cloud}} Classic Infrastructure to a {{site.data.keyword.vpc_full}} Application Load Balancer (ALB). To complete the migration, re-create your load-balancing configuration in a {{site.data.keyword.vpc_short}} by using native cloud capabilities.
+Migrate your {{site.data.keyword.vpx_full_reg}} {{site.data.keyword.loadbalancer_short}} from {{site.data.keyword.cloud}} Classic Infrastructure to {{site.data.keyword.vpc_full}} Application Load Balancer (ALB). To complete the migration, re-create your load-balancing configuration in {{site.data.keyword.vpc_short}} by using native cloud capabilities.
 {: shortdesc}
 
 ## Understanding the migration
