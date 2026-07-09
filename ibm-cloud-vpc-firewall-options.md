@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-02"
+lastupdated: "2026-07-09"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -281,7 +281,7 @@ For detailed implementation guidance and reference architectures, see the [Trans
 
 [^sdn]: Virtual Router Redundancy Protocol (VRRP), Pacemaker, or vendor-specific HA mechanisms might be supported depending on vendor and design.
 
-[^cv]: Custom or BYOA vendor images might require customer-managed integration and validation. Vendor image availability does not necessarily imply {{site.data.keyword.vpc_short}} compatibility or vendor-supported operation. For more information, see [Custom images and vendor support](#custom-images-vendor-support).
+[^cv]: Custom or BYOA vendor images might require customer-managed integration and validation. Vendor image availability does not necessarily imply {{site.data.keyword.vpc_short}} compatibility or vendor-supported operation. For more information, see [Custom images and vendor support](#custom-images-byoa-vendor-support).
 
 After you identify a deployment pattern, review the [vendor support matrix for HA firewall deployments](#vendor-support-matrix-firewall-deployment-licensing) to determine which firewall vendors support the selected high availability architecture, routing model, and automation mechanism.
 
