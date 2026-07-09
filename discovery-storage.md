@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-17"
+  years: 2026
+lastupdated: "2026-07-09"
 
 keywords: storage, classic virtual server instance
 
@@ -381,7 +381,7 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
 
 4. Get mount path details. Run `lsblk -f` command to get the mount path, file system type, UUID, and available space of the file system mounted on the multipath device. In this example, sda and sdb represent iSCSI device paths on which the ext4 file system is mounted on path - /mnt/mount1. Use the file system mount path for data migration to {{site.data.keyword.vpc_full}}.
 
-  Example output:
+    Example output:
 
   ```sh
       $ lsblk -f
@@ -400,8 +400,8 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
     xvdb
     └─xvdb1                             swap         1     SWAP-xvdb1      d51fcca0-6b10-4934-a572-f3898dfd8840                [SWAP]
     xvdh                                vfat         FAT16 config-2        9796-932E
-  ```
-  {: screen}
+    ```
+    {: screen}
 
 ### Showing iSCSI block volume details from mpath in a virtual server instance example
 {: #show-block-volume-details-from-mpath-cli-example}
@@ -1113,7 +1113,7 @@ In this case, the device number is 4. Therefore, the portable storage volume tha
 2. Map the device number to the block device name. Block device numbers start at 0 and correspond to disks in alphabetical order. For example, xvda is device number 0, xvdb is 1, and xvdc is 2.
 3. Map the block device names to the mount point. In the following example, a file system exists on xvde (see the `NAME` column) for which the mount point is `/mnt/portableStorage` (see the `MOUNTPOINTS` column).
 
-  Example output:
+    Example output:
 
   ```sh
     $ lsblk -f
@@ -1126,5 +1126,5 @@ In this case, the device number is 4. Therefore, the portable storage volume tha
     xvdc
     xvde    ext4   1.0                   78c10f59-5a11-4235-ab23-3fcc016efaf5    9.2G     0% /mnt/portableStorage
     xvdh    vfat   FAT16 config-2        9796-932E
-  ```
-  {: screen}
+    ```
+    {: screen}
