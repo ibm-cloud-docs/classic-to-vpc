@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-09"
+lastupdated: "2026-07-16"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -1016,7 +1016,7 @@ For more information, see [Getting started with {{site.data.keyword.cloud_notm}}
 The following physical firewall offerings are deprecated:
 
 * FortiGate 10G (see [Exploring firewalls](/docs/fortigate-10g?topic=fortigate-10g-exploring-firewalls))
-* Hardware Firewall (Shared) (see [Getting started with Hardware Firewall](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-getting-started))
+* Hardware Firewall (Shared) (see [Getting started with Hardware Firewall](/docs/hardware-firewall-shared?topic=hardware-firewall-shared-deprecation-hardware-shared-firewall))
 
 ### Classic to VPC firewall and networking mapping
 {: #classic-to-vpc-mapping}
