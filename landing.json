@@ -32,16 +32,16 @@
     "view_more": "/docs/classic-to-vpc?topic=classic-to-vpc-overview",
     "tiles": [
       {
-        "date": "06 April 2026",
-        "title": "Migration approaches and considerations"
+        "date": "02 July 2026",
+        "title": "IBM Cloud VPC firewall options"
       },
       {
-        "date": "06 April 2026",
-        "title": "Migrating from Classic virtual server instance to VPC virtual server instance"
+        "date": "29 May 2026",
+        "title": "Migrating from Direct Link on Classic (1.0) to Direct Link (2.0)"
       },
       {
-        "date": "06 April 2026",
-        "title": "Migrating an image template to VPC"
+        "date": "22 May 2026",
+        "title": "Migrating from Citrix VPX on IBM Cloud Classic to VPC Application Load Balancer"
       }
     ]
   }
