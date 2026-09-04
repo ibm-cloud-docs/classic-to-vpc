@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-02"
+lastupdated: "2026-09-04"
 
 keywords: Citrix VPX, load balancer migration, ALB, application load balancer, VPC load balancer, classic to vpc migration
 
@@ -535,7 +535,7 @@ You cannot access the load balancer
 :   Verify DNS resolution to the ALB hostname.
 :   Review the {{site.data.keyword.vpc_short}} routing tables.
 
-For extra troubleshooting, see [Troubleshooting VPC](/docs/vpc?topic=vpc-troubleshooting-vpc).
+For extra troubleshooting, see [Troubleshooting VPC](/docs/vpc?group=tbs-vpc).
 
 ## Comparison: Feature parity checklist
 {: #feature-parity}
