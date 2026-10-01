@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-09"
+  years: 2026
+lastupdated: "2026-09-04"
 
 keywords: migration, migrate, migrating, migrate data, data migration
 
@@ -46,7 +46,7 @@ Before you create your {{site.data.keyword.tg_full_notm}}, review the following 
 
 - Help ensure that the Virtual Router Forwarding (VRF) is enabled on the classic infrastructure.
 - Help ensure that the IP network spaces don't overlap. Your VPC IP address must not be present in the classic infrastructure IP range.
-- Help ensure that your classic infrastructure data centers are able to connect to VPC. [Transit-Gateway-compatible classic data centers](/docs/transit-gateway?topic=transit-gateway-tg-locations#szr-table)
+- Help ensure that your classic infrastructure data centers are able to connect to VPC. [Transit-Gateway-compatible classic data centers](/docs/transit-gateway?topic=transit-gateway-tg-locations#classic-dc-table)
 - Help ensure the Classic and VPC access control list (ACL) and security group is configured to allow ICMP and SSH/TCP connection.
 
 To create {{site.data.keyword.tg_full_notm}} and establish the connection between classic and VPC, review the following information:

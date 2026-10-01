@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-08-05"
+lastupdated: "2026-09-04"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -1218,6 +1218,10 @@ Virtual server instance versus bare metal server
 - [Fortinet vFSA on IBM Cloud: Bare-Metal HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/07/02/fortinet-vfsa-on-ibm-cloud-bm-ap){: external}
 
 - [Fortinet vFSA on IBM Cloud: OnPrem to Spoke VPC with Active/Active/Active HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/08/04/fortinet-vfsa-on-ibm-cloud-onprem-to-vpc-aaa){: external}
+
+- [Fortinet vFSA on IBM Cloud: Single VPC Active/Active with Route Mode NLB](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/08/28/fortinet-vfsa-on-ibm-cloud-single-vpc-aa){: external}
+
+- [Fortinet vFSA on IBM Cloud: Single Zone Active/Passive for Hub-And-Spoke](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/09/02/fortinet-vfsa-on-ibm-cloud-singlezone-ap){: external}
 
 ### IBM Cloud documentation
 {: #cloud-docs}
