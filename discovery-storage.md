@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-07-09"
+lastupdated: "2026-10-06"
 
 keywords: storage, classic virtual server instance
 
@@ -247,7 +247,7 @@ ID          User name                   Account ID   Capacity (GB)   Hardware ID
 ```
 {: screen}
 
-### With the API
+#### With the API
 {: #show-replica-details-block-volumes-api}
 {: api}
 
@@ -379,7 +379,7 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
     ```
     {: screen}
 
-4. Get mount path details. Run `lsblk -f` command to get the mount path, file system type, UUID, and available space of the file system mounted on the multipath device. In this example, sda and sdb represent iSCSI device paths on which the ext4 file system is mounted on path - /mnt/mount1. Use the file system mount path for data migration to {{site.data.keyword.vpc_full}}.
+4. Get mount path details. Run `lsblk -f` command to get the mount path, file system type, UUID, and available space of the file system mounted on the multipath device. In this example, `sda` and `sdb` represent iSCSI device paths on which the ext4 file system is mounted on path - /mnt/mount1. Use the file system mount path for data migration to {{site.data.keyword.vpc_full}}.
 
     Example output:
 
@@ -409,7 +409,7 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
 1. Get the iSCSI block device name.
 
     ```sh
-    sblk -f
+    lsblk -f
     ```
     {: pre}
 
@@ -430,11 +430,11 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
     ```
     {: screen}
 
-    In this example, the iSCSI block device's paths are sda and sdb (multipath).
+    In this example, the iSCSI block device's paths are `sda` and `sdb` (multipath).
 
 2. Find the target IP address of the block volume
 
-    The target IP address is the address that the initiator virtual server instance uses to reach the target (iSCSI block Volume). To find the target IP address, map the iSCSI block device name from previous command to the following command output under **Attached SCSI devices** and get the `Current portal IP`, which is the target IP address of the block volume. In this example, `198.51.100.42` is the target IP address for the volume that is attached to iSCSI block device path sda.
+    The target IP address is the address that the initiator virtual server instance uses to reach the target (iSCSI block Volume). To find the target IP address, map the iSCSI block device name from previous command to the following command output under **Attached SCSI devices** and get the `Current portal IP`, which is the target IP address of the block volume. In this example, `198.51.100.42` is the target IP address for the volume that is attached to iSCSI block device path `sda`.
 
     ```sh
     iscsiadm -m session -P 3
@@ -542,7 +542,9 @@ For more information, see [getReplicationPartners for iSCSI block volume](https:
 ### Showing ISCSI usage in a virtual server instance
 {: #show-iscsi-usage-in-vsi-example}
 
-From the command line of the virtual server, run one of these commands: `df -k` or `lsblk`. In both examples, `/dev/mapper/3600a098038313871673f56754a724c34` is the block device.
+From the command line of the virtual server, run `df -k` to see all mounted file systems, including iSCSI block volumes (shown as `/dev/mapper/...` entries) and NFS file shares. Run `lsblk` to see the block device tree. Note that `lsblk` shows only block devices, NFS mounts do not appear in its output.
+
+In both examples, `3600a098038313871673f56754a724c34` is the multipath block device, shown as `/dev/mapper/3600a098038313871673f56754a724c34` in `df -k` and as the multipath device name under `sda`/`sdb` in `lsblk`.
 
 ```sh
 # df -k
@@ -559,44 +561,7 @@ tmpfs                                                      172792         4    1
 ```
 {: screen}
 
-```sh
-[root@storage-poc-sjc ~]# lsblk
-NAME                                MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINTS
-sda                                   8:0    0  500G  0 disk
-└─3600a098038313871673f56754a724c34 253:0    0  500G  0 mpath /mnt/DSW02SEL3134915-2
-sdb                                   8:16   0  500G  0 disk
-└─3600a098038313871673f56754a724c34 253:0    0  500G  0 mpath /mnt/DSW02SEL3134915-2
-xvda                                202:0    0  100G  0 disk
-├─xvda1                             202:1    0    1G  0 part  /boot
-└─xvda2                             202:2    0   99G  0 part  /
-xvdb                                202:16   0    2G  0 disk
-└─xvdb1                             202:17   0    2G  0 part  [SWAP]
-xvdc                                202:32   0  100G  0 disk
-xvde                                202:64   0  100G  0 disk
-xvdh                                202:112  0   64M  0 disk
-```
-{: screen}
-
-The `/dev/mapper/3600a098038313871673f56754a724c34` volume has 500 GiB capacity, and 59% of the capacity is in use.
-
-```sh
-[root@storage-poc-sjc ~]# df -k
-Filesystem                                              1K-blocks      Used Available Use% Mounted on
-devtmpfs                                                     4096         0      4096   0% /dev
-tmpfs                                                      863972         0    863972   0% /dev/shm
-tmpfs                                                      345592     32548    313044  10% /run
-/dev/xvda2                                              102111832   3773432  93131652   4% /
-/dev/xvda1                                                 996780    365300    562668  40% /boot
-tmpfs                                                      172792         4    172788   1% /run/user/1000
-nfssjc0301a-fz.service.softlayer.com:/DSW02SEV3134915_1 104857600      3712 104853888   1% /mnt/DSW02SEV3134915_1
-/dev/mapper/3600a098038313871673f56754a724c34           514937088 286463152 202243152  59% /mnt/DSW02SEL3134915-2
-tmpfs                                                      172792         4    172788   1% /run/user/0
-```
-{: screen}
-
-In this example, `/dev/mapper/3600a098038313871673f56754a724c34` is the block device.
-
-Example output:
+In this example, the iSCSI block device `/dev/mapper/3600a098038313871673f56754a724c34` has 500 GiB capacity with 59% in use, mounted at `/mnt/DSW02SEL3134915-2`. The NFS file share `DSW02SEV3134915_1` is also visible, mounted at `/mnt/DSW02SEV3134915_1`.
 
 ```sh
 [root@storage-poc-sjc ~]# lsblk
@@ -615,6 +580,8 @@ xvde                                202:64   0  100G  0 disk
 xvdh                                202:112  0   64M  0 disk
 ```
 {: screen}
+
+In this example, `lsblk` shows the same block device `3600a098038313871673f56754a724c34` accessed through two multipath paths (`sda` and `sdb`), mounted at `/mnt/DSW02SEL3134915-2`. The NFS mount is not shown because `lsblk` lists only block devices.
 
 ## Discovering file storage
 {: #discover-file-storage}
@@ -630,7 +597,8 @@ From the CLI, run the following command.
 
 ```sh
 ibmcloud sl file volume-list
-``` {: pre}
+```
+{: pre}
 
 Example output:
 
@@ -641,7 +609,7 @@ id          username                    datacenter   storage_type               
 ```
 {: screen}
 
-With the API -
+With the API, make the following request:
 
 ```sh
 curl -g -u $SL_USER:$SL_APIKEY -X GET \
@@ -683,10 +651,10 @@ Encrypted                  False
 ```
 {: screen}
 
-With the API -
+With the API, make the following request:
 
 ```sh
-curl -g -u $SL_USER:$SL_APIKEY -X GET /
+curl -g -u $SL_USER:$SL_APIKEY -X GET \
 'https://api.softlayer.com/rest/v3.1/SoftLayer_Network_Storage/{File_Vol_ID}?objectMask=mask[id,username,password,capacityGb,bytesUsed,snapshotCapacityGb,parentVolume.snapshotSizeBytes,storageType.keyName,serviceResource.datacenter.name,serviceResourceBackendIpAddress,fileNetworkMountAddress,storageTierLevel,iops,lunId,originalVolumeName,originalSnapshotName,originalVolumeSize,activeTransactionCount,activeTransactions.transactionStatus.friendlyName,replicationPartnerCount,replicationStatus,replicationPartners.id,replicationPartners.username,replicationPartners.serviceResourceBackendIpAddress,replicationPartners.serviceResource.datacenter.name,replicationPartners.replicationSchedule.type.keyname,notes]'
 ```
 {: pre}
@@ -712,7 +680,7 @@ id          user_name              created                     size_bytes   note
 ```
 {: screen}
 
-With the API -
+With the API, make the following request:
 
 ```sh
 curl -g -u $SL_USER:$SL_APIKEY -X GET \
@@ -741,7 +709,7 @@ ID          User name                    Account ID   Capacity (GB)   Hardware I
 ```
 {: screen}
 
-With the API -
+With the API, make the following request:
 
 ```sh
 curl -g -u $SL_USER:$SL_APIKEY -X GET \
@@ -780,7 +748,7 @@ For more information, see [getReplicationPartners for file volume](https://sldn.
      ```
     {: screen}
 
-    With the API -
+    With the API, make the following request:
 
     ```sh
     curl -g -u $SL_USER:$SL_APIKEY -X GET \
@@ -828,7 +796,7 @@ For more information, see [getReplicationPartners for file volume](https://sldn.
      ```
      {: pre}
 
-    Grep for `mount point` and check for `type nfs` in the following output to find details about the mount address of the nfs file share.
+    Grep for `mount point` and check for `type nfs` in the following output to find details about the mount address of the NFS file share.
 
     Example output:
 
@@ -919,7 +887,7 @@ Refer to the **Portable Storage** section in the output to find its **descriptio
 
 Example output: Refer to [Example](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-storage-resources&interface=cli#list-all-storage-attached-to-virtual-servers-cli-example)
 
-With the API -
+With the API, make the following request:
 
 ```sh
 curl -g -u $SL_USER:$SL_APIKEY -X GET \
@@ -929,9 +897,9 @@ curl -g -u $SL_USER:$SL_APIKEY -X GET \
 
 Example output:
 
-You can find the portable storages under **blockDevices** > **bootableFlag:0**. Use the **Description** value to map the respective portable storage volume.
+You can find the portable storages under `blockDevices` > `bootableFlag:0`. Use the `description` value to map the respective portable storage volume.
 
-```sh
+```json
 {"hostname":"virtualserver01","id":154195996,"maxCpu":2,"maxMemory":4096,"provisionDate":"2025-11-06T07:43:52-06:00","allowedNetworkStorage":[{"accountId":1041833,"capacityGb":20,"createDate":"2025-10-30T02:21:22-07:00","guestId":null,"hardwareId":null,"hostId":null,"id":723195182,"nasType":"ISCSI","serviceProviderId":1,"storageTypeId":"7","upgradableFlag":true,"username":"IBM02SEL1041833-909","serviceResourceBackendIpAddress":"192.0.2.10","serviceResourceName":"Storage Type 02 Block Aggregate stbf-dal1303g"},{"accountId":1041833,"capacityGb":20,"createDate":"2025-10-21T07:06:09-07:00","guestId":null,"hardwareId":null,"hostId":null,"id":721245700,"nasType":"NAS","notes":"  Automation Storage Test - SMT - MOUNT \"\"","serviceProviderId":1,"storageTypeId":"13","upgradableFlag":true,"username":"IBM02SEV1041833_935","serviceResourceBackendIpAddress":"fsf-dal1301j-fz.adn.networklayer.com","serviceResourceName":"Storage Type 02 File Aggregate stff-dal1301j"}],"backendNetworkComponents":[{"speed":100,"primaryIpAddress":"192.0.2.10"}],"blockDevices":[{"bootableFlag":1,"device":"0","diskImage":{"capacity":100,"description":"virtualserver01.ibmcloud.private","localDiskFlag":true}},{"bootableFlag":0,"device":"1","diskImage":{"capacity":2,"description":"154195996-SWAP","localDiskFlag":true}},{"bootableFlag":0,"device":"2","diskImage":{"capacity":100,"description":"virtualserver01 - Disk 2","localDiskFlag":true}},{"bootableFlag":0,"device":"4","diskImage":{"capacity":10,"description":"virtualserver01 - Disk 3","localDiskFlag":true}},{"bootableFlag":0,"device":"7","diskImage":{"capacity":64,"description":"virtualserver01 - Metadata","localDiskFlag":true}}],"frontendNetworkComponents":[{"speed":100,"primaryIpAddress":"192.0.2.11"}],"localDiskFlag":true,"operatingSystem":{"hardwareId":null,"id":91776354,"manufacturerLicenseInstance":"","softwareLicense":{"id":80628,"softwareDescriptionId":3228,"softwareDescription":{"longDescription":"Ubuntu 24.04-64 Minimal for VSI"}}}}%
 ```
 {: pre}
@@ -967,7 +935,7 @@ You can find the portable storages under **blockDevices** > **bootableFlag:0**. 
 
 2. Get the block device number.
 
-     Block device numbers start at 0 and correspond to disks in alphabetical order. For example, xvda is 0, xvdb is 1, xvdc is 2, and so on.
+     Block device numbers start at 0 and correspond to disks in alphabetical order. For example, `xvda` is 0, `xvdb` is 1, `xvdc` is 2, and so on.
 
      In this case, xvde is mapped to device number 4.
 
@@ -976,7 +944,8 @@ You can find the portable storages under **blockDevices** > **bootableFlag:0**. 
      Get the `VSI_ID` to which the portable storage volume is attached. Then, run the following API call to get the description of block devices attached to the virtual server instance.
 
      ```sh
-     curl -g -u $SL_USER:$SL_APIKEY -X GET 'https://api.softlayer.com/rest/v3.1/SoftLayer_Virtual_Guest/{VSI_ID}.json?objectMask=mask[hostname,id,operatingSystem.softwareLicense.softwareDescription.longDescription,provisionDate,frontendNetworkComponents.speed,frontendNetworkComponents.primaryIpAddress,maxMemory,maxCpu,backendNetworkComponents.speed,backendNetworkComponents.primaryIpAddress,allowedNetworkStorage,blockDevices.diskImage,localDiskFlag,blockDevices.bootableFlag,blockDevices.device,blockDevices.diskImage.capacity,blockDevices.diskImage.diskImageStorageGroup,blockDevices.diskImage.importedDiskType,blockDevices.diskImage.localDiskFlag,blockDevices.diskImage.description]'
+     curl -g -u $SL_USER:$SL_APIKEY -X GET \
+     'https://api.softlayer.com/rest/v3.1/SoftLayer_Virtual_Guest/{VSI_ID}.json?objectMask=mask[hostname,id,operatingSystem.softwareLicense.softwareDescription.longDescription,provisionDate,frontendNetworkComponents.speed,frontendNetworkComponents.primaryIpAddress,maxMemory,maxCpu,backendNetworkComponents.speed,backendNetworkComponents.primaryIpAddress,allowedNetworkStorage,blockDevices.diskImage,localDiskFlag,blockDevices.bootableFlag,blockDevices.device,blockDevices.diskImage.capacity,blockDevices.diskImage.diskImageStorageGroup,blockDevices.diskImage.importedDiskType,blockDevices.diskImage.localDiskFlag,blockDevices.diskImage.description]'
      ```
      {: pre}
 
@@ -984,7 +953,7 @@ You can find the portable storages under **blockDevices** > **bootableFlag:0**. 
 
     Example output:
 
-    ```sh
+    ```json
     {
       "hostname": "virtualserver01",
       "id": 154195996,
@@ -1106,11 +1075,11 @@ You can find the portable storages under **blockDevices** > **bootableFlag:0**. 
 
 In this case, the device number is 4. Therefore, the portable storage volume that is mapped to the `/mnt/portableStorage` mount point is `virtualserver01 - Disk 3` with a capacity of 10 GB.
 
-### Find a mount point in the virtual server instance for a particular local/portable storage volume example
+### Find a mount point in the virtual server instance for a particular local portable storage volume example
 {: #find-mount-point-from-portable-volume-details-cli-example}
 
-1. Find the device number of the local/portable storage volume that is attached to the virtual server instance. The **diskImage** field under **blockDevices** contains details of the portable storage volume including the device number. For more information, see [Showing local and portable volume details](#show-local-and-portable-volume-details-from-mpath-cli-example).
-2. Map the device number to the block device name. Block device numbers start at 0 and correspond to disks in alphabetical order. For example, xvda is device number 0, xvdb is 1, and xvdc is 2.
+1. Find the device number of the local portable storage volume that is attached to the virtual server instance. The `diskImage` field under `blockDevices` contains details of the portable storage volume, which includes the device number. For more information, see [Showing local and portable volume details](#show-local-and-portable-volume-details-from-mpath-cli-example).
+2. Map the device number to the block device name. Block device numbers start at 0 and correspond to disks in alphabetical order. For example, `xvda` is device number 0, `xvdb` is 1, and `xvdc` is 2.
 3. Map the block device names to the mount point. In the following example, a file system exists on xvde (see the `NAME` column) for which the mount point is `/mnt/portableStorage` (see the `MOUNTPOINTS` column).
 
     Example output:
@@ -1128,3 +1097,10 @@ In this case, the device number is 4. Therefore, the portable storage volume tha
     xvdh    vfat   FAT16 config-2        9796-932E
     ```
     {: screen}
+
+## See also
+{: #see-also-discovery-storage}
+
+* [Discovery of classic infrastructure](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure). Read this topic for an overview of the full discovery process, including account planning and application grouping.
+* [Discovery of classic compute resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-compute-resources). Follow this process to inventory vCPU, memory, OS, and network configuration for each classic virtual server.
+* [Migrating data from IBM Cloud classic infrastructure to VPC](/docs/classic-to-vpc?topic=classic-to-vpc-data-migration-classic-to-vpc). Use your storage inventory to plan and execute the data migration step.

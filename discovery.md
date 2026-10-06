@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-10"
+  years: 2026
+lastupdated: "2026-10-06"
 
 keywords: discovery, inventory
 
@@ -15,8 +15,10 @@ subcollection: classic-to-vpc
 # Discovery of classic infrastructure
 {: #discover-classic-infrastructure}
 
-The first step in assessing your environment for migration is to understand what is provisioned and how it is used. You can view the inventory of all resources in your environment from the {{site.data.keyword.cloud}} dashboard. Having an inventory of classic infrastructure resources and their configurations helps with planning, cost estimation, and mapping to target configurations when you provision equivalent resources in the {{site.data.keyword.vpc_full}} (VPC) environment.
+Before you migrate to {{site.data.keyword.vpc_full}}, create an inventory of your classic infrastructure resources and their configurations to support planning, cost estimation, and target environment mapping.
 {: shortdesc}
+
+You can view the inventory of all resources in your environment from the {{site.data.keyword.cloud}} dashboard. Having an inventory of classic infrastructure resources and their configurations helps with planning, cost estimation, and mapping to target configurations when you provision equivalent resources in the {{site.data.keyword.vpc_full}} (VPC) environment.
 
 ## Template for capturing your classic infrastructure footprint
 {: #template-capturing-classic-infrasturcture-footprint}
@@ -36,7 +38,7 @@ Follow the instructions in [Discovery of Classic Compute Resources](/docs/classi
 ### Storage resources
 {: #storage-resources}
 
-Follow the instructions in [Discovery of Classic Storage Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-storage-resources) to identify and capture the information about classic storage volumes of in your account.
+Follow the instructions in [Discovery of Classic Storage Resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-storage-resources) to identify and capture the information about classic storage volumes in your account.
 
 ### Application information
 {: #application-information}
@@ -52,3 +54,10 @@ After you collect the details for all classic virtual server instances:
 2. Plan storage migration: Align classic SAN or local attached storage with {{site.data.keyword.vpc_short}} block or file storage.
 3. Evaluate billing options: Determine whether hourly or reserved {{site.data.keyword.vpc_short}} profiles are most cost-effective.
 4. Assess software licensing: Verify whether required add-ons and licenses are supported in {{site.data.keyword.vpc_short}}. If not, you can install and license them independently.
+
+## See also
+{: #see-also-discovery}
+
+* [Prerequisites for migration](/docs/classic-to-vpc?topic=classic-to-vpc-key-migration-prerequisites). Confirm VRF enablement, CLI setup, and quota headroom before you start provisioning.
+* [Migration decisions for compute](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute). Use your inventory data to select VPC profiles and plan high availability.
+* [Migrating from Classic virtual server instance to VPC virtual server instance](/docs/classic-to-vpc?topic=classic-to-vpc-migrate-classic-to-vpc). Follow this guide to complete the end-to-end migration process, from pre-migration planning through cutover.

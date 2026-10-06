@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-17"
+  years: 2026
+lastupdated: "2026-10-06"
 
 keywords: pre-requisites, classic-to-vpc, tools
 
@@ -25,21 +25,29 @@ To connect over {{site.data.keyword.IBM}} private network to {{site.data.keyword
 
 Before you enable VRF, read the [FAQ](/docs/account?topic=account-vrf-faqs) to understand and plan for enablement. A short intermittent connectivity loss can occur between your existing classic servers on the private network during the migration process.
 
-## IBM Cloud CLI
+## {{site.data.keyword.cloud_notm}} CLI
 {: #ibm-cloud-cli}
 
-The IBM Cloud Command Line Interface (CLI) provides commands for managing resources in {{site.data.keyword.cloud_notm}}. When you install the stand-alone [IBM Cloud CLI](/docs/cli?topic=cli-getting-started), you get only the CLI itself without any recommended plug-ins or tools. Install the necessary plug-ins to work with your environment.
+The {{site.data.keyword.cloud}} Command Line Interface (CLI) provides commands for managing resources in {{site.data.keyword.cloud_notm}}. When you install the stand-alone [IBM Cloud CLI](/docs/cli?topic=cli-getting-started), you get only the CLI itself without any recommended plug-ins or tools. Install the necessary plug-ins to work with your environment.
 
 You can find more information about plug-ins and command help in the [CLI reference](/docs/cli?topic=cli-ibmcloud_cli) section of the IBM Cloud CLI documentation.
+
+## Quota increases
+{: #quota-increases}
+
+Before you provision your target environment on VPC, review the [Quota and Service Limits for VPC](/docs/vpc?topic=vpc-quotas). To request a limit increase, open a [Support Case](/unifiedsupport/cases/form).
+
+In some migration scenarios, you might need to increase your quota on the classic source environment. For example, if you are at your maximum storage quota and need to add a temporary disk during migration, you must request a quota increase first. For more information, see [Managing storage limits](/docs/BlockStorage?topic=BlockStorage-managingstoragelimits).
 
 ## Support and help
 {: #support-and-help}
 
-For support assistance or questions, refer to the [Support Center](/docs/support?topic=support-using-avatar).
+For support or questions, see [Getting help and support](/docs/support?topic=support-using-avatar).
 
-### Quota increases
-{: #quota-increases}
+## See also
+{: #see-also-prerequisites}
 
-To validate your quota needs before deploying your target environment on VPC, refer to the [Quota and Service Limits for VPC](/docs/vpc?topic=vpc-quotas). To request a limit increase, open a [Support Case](https://cloud.ibm.com/unifiedsupport/cases/form){: external}
-
-On the classic source environment, you might need to increase the quota in some situations to support migration. One scenario might be when adding a new temporary disk when you are at maximum storage quota. For more information, see [Managing storage limits](/docs/BlockStorage?topic=BlockStorage-managingstoragelimits).
+* [Discovery of classic infrastructure](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure). If you have not yet inventoried your classic environment, complete discovery before you start provisioning VPC resources.
+* [Setting up your VPC environment](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-creating-steps). Follow these step-by-step instructions to create a VPC, subnets, security groups, and a virtual server instance.
+* [Migration decisions for compute](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute). Review this topic for profile selection, high availability options, and deployable architectures to consider before provisioning.
+* [Migrating from Classic virtual server instance to VPC virtual server instance](/docs/classic-to-vpc?topic=classic-to-vpc-migrate-classic-to-vpc). Follow this guide to complete the end-to-end migration process after prerequisites are confirmed.
