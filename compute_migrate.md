@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-02"
+  years: 2026
+lastupdated: "2026-10-06"
 
 keywords: classic to vpc migration, networking
 
@@ -38,12 +38,12 @@ ibmcloud is volume-profiles
 ```
 
 The flex profiles are recommended targets when you migrate your workloads to VPC. Before you provision the flex profiles, you can validate that the workloads are cross-compatible with both Intel&reg; and AMD architectures. {{site.data.keyword.cloud_notm}} can allocate compute resources on either architecture based on availability, performance, or capacity. Failure to establish that compatibility can result in unexpected behavior or degraded performance.
-{: note}
+{: attention}
 
 Common profile mappings:
-* Classic 2x8 → VPC bxf-2x8 (2 vCPU, 8 GB RAM)
-* Classic 4x16 → VPC bxf-4x16 (4 vCPU, 16 GB RAM)
-* Classic 8x32 → VPC bxf-8x32 (8 vCPU, 32 GB RAM)
+* Classic 2x8 maps to VPC bxf-2x8 (2 vCPU, 8 GB RAM)
+* Classic 4x16 maps to VPC bxf-4x16 (4 vCPU, 16 GB RAM)
+* Classic 8x32 maps to VPC bxf-8x32 (8 vCPU, 32 GB RAM)
 
 Flex also introduces nano profiles for smaller workloads.
 
@@ -61,3 +61,11 @@ Use deployable architectures to provision and update your resources. Use the [Cl
 {: #ha-dr}
 
 Review the [High availability](/docs/vpc?topic=vpc-ha-dr-vpc) features of {{site.data.keyword.vpc_short}}. Learn more about the management [responsibilities](/docs/vpc?topic=vpc-responsibilities-vpc) that you have when you use {{site.data.keyword.cloud_notm}}. The [resiliency](/docs/resiliency) solution guide is a good starting point to understand the resiliency aspects of {{site.data.keyword.cloud_notm}} and designing resilient solutions on {{site.data.keyword.cloud_notm}}.
+
+## See also
+{: #see-also-compute}
+
+* [Discovery of classic compute resources](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-compute-resources). Before you select a profile, create an inventory of your classic virtual servers by completing the discovery process.
+* [Prerequisites for migration](/docs/classic-to-vpc?topic=classic-to-vpc-key-migration-prerequisites). Before you provision VPC resources, confirm that VRF is enabled and that your quota headroom is sufficient.
+* [Setting up your VPC environment](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-creating-steps). Follow this guide after you finalize your profile decisions to provision your VPC, subnets, security groups, and virtual server instances.
+* [Migrating from Classic virtual server instance to VPC virtual server instance](/docs/classic-to-vpc?topic=classic-to-vpc-migrate-classic-to-vpc). Follow this guide to complete the end-to-end migration process, from pre-migration planning through cutover and post-migration optimization.

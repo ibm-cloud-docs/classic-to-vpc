@@ -86,18 +86,14 @@ toc:
       topics:
       - topicgroup:
           id: troubleshoot-vpc
-          label: Troubleshooting
+          label: Troubleshooting your VPC
           topics:
-          - topicgroup:
-              id: troubleshoot-vpc
-              label: Troubleshooting your VPC
-              topics:
-              - topic: troubleshooting-vpc/troubleshoot-vpc-internet-access.md
-                navtitle: Why can't my application access the internet?
-              - topic: troubleshooting-vpc/troubleshoot-vpc-perf.md
-                navtitle: Why is my application performance slower than classic virtual server instance?
-              - topic: troubleshooting-vpc/troubleshoot-vpc-ssh.md
-                navtitle: Why am I unable to connect to my Virtual Servers for VPC using SSH?
-              - link:
-                  label: Others
-                  href: https://cloud.ibm.com/docs/vpc?group=troubleshooting
+          - topic: troubleshooting-vpc/troubleshoot-vpc-internet-access.md
+            navtitle: Why can't my application access the internet?
+          - topic: troubleshooting-vpc/troubleshoot-vpc-perf.md
+            navtitle: Why is my application performance slower than classic virtual server instance?
+          - topic: troubleshooting-vpc/troubleshoot-vpc-ssh.md
+            navtitle: Why am I unable to connect to my Virtual Servers for VPC using SSH?
+          - link:
+              label: Others
+              href: https://cloud.ibm.com/docs/vpc?group=troubleshooting

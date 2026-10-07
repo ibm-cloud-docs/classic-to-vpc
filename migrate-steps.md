@@ -3,7 +3,7 @@
 copyright:
   years: 2026
 
-lastupdated: "2026-05-11"
+lastupdated: "2026-10-06"
 
 keywords: virtual server instance migration, Classic to VPC, virtual server migration, VPC architecture, security groups, floating IP
 
@@ -19,14 +19,8 @@ subcollection: classic-to-vpc
 The following steps explain how to set up and configure your first {{site.data.keyword.vpc_full}} environment and provision a virtual server within it.
 {: shortdesc}
 
-## Step by step migration guide
-{: #migration-steps}
-
-Follow the steps to migrate a Classic virtual server to {{site.data.keyword.vpc_short}} virtual server.
-
-### Creating a resource group
+## Creating a resource group
 {: #creating-rg}
-{: #step-1}
 
 Create a resource group to organize and manage related {{site.data.keyword.cloud}} resources, such as your virtual server instances, networking components, and storage.
 
@@ -39,13 +33,12 @@ Using the {{site.data.keyword.cloud}} CLI, you can create a resource group by sp
 ibmcloud resource group-create prod-workload-rg
 ```
 
-### Creating a VPC infrastructure
+## Creating a VPC infrastructure
 {: #creating-vpc-infrastructure}
-{: #step-2}
 
-This step explains how to create the infrastructure required for your {{site.data.keyword.vpc_short}} environment.
+This section explains how to create the infrastructure required for your {{site.data.keyword.vpc_short}} environment.
 
-#### Creating a VPC environment
+### Creating a VPC environment
 {: #creating-vpc-environment}
 {: cli}
 
@@ -59,7 +52,7 @@ Run the following command to create a VPC with manual address prefix management:
 ibmcloud is vpc-create production-vpc --resource-group-name prod-workload-rg --address-prefix-management manual
 ```
 
-#### Creating a VPC in the console
+### Creating a VPC in the console
 {: #creating-vpc-console}
 {: ui}
 
@@ -70,7 +63,7 @@ Follow the steps to create {{site.data.keyword.vpc_full}} in the console:
 3. Select a resource group
 4. Choose **Manual** for address prefix management and click **Create**
 
-#### Create address prefixes
+### Create address prefixes
 {: #create-address-prefixes}
 
 Run the following command to define the IP address range that is used by your VPC.
@@ -79,12 +72,12 @@ Run the following command to define the IP address range that is used by your VP
 ibmcloud is vpc-address-prefix-create production-vpc us-south-1 prefix-us-south-1 10.240.0.0/16
 ```
 
-#### Creating access control list (ACL)
+### Creating access control list (ACL)
 {: #create-acls}
 
 For enhanced security, it is advisable to create [nondefault ACLs](/docs/vpc?topic=vpc-using-acls&interface=ui#updating-the-default-acl) to allow selective traffic to and from your subnet. This step is optional. The ACL can be attached to the subnet.
 
-#### Creating subnets
+### Creating subnets
 {: #creating-subnets}
 
 Create subnets to define IP address ranges within your VPC where virtual server instances are deployed. Each subnet is associated with a specific zone and provides network connectivity for the resources that are present in that zone.
@@ -102,7 +95,7 @@ ibmcloud is subnet-create subnet-2 production-vpc us-south-2 --ipv4-cidr-block 1
 ibmcloud is subnet-create subnet-3 production-vpc us-south-3 --ipv4-cidr-block 10.240.2.0/24
 ```
 
-#### Creating a public gateway (optional)
+### Creating a public gateway (optional)
 {: #creating-public-gateway}
 
 Run the following command if your virtual server instances need outbound internet access without floating IPs:
@@ -112,13 +105,12 @@ ibmcloud is public-gateway-create pgw-us-south-1 production-vpc us-south-1
 ibmcloud is subnet-update subnet-1 --public-gateway pgw-us-south-1
 ```
 
-### Configuring security groups
+## Configuring security groups
 {: #configure-security-groups}
-{: #step-3}
 
 Create security groups to define and control inbound and outbound network traffic for your virtual server instances. Security groups act as virtual firewalls that specify rules based on protocols, ports, source, and destination IP addresses. You can create multiple security groups to apply different sets of rules to different virtual server instances.
 
-#### Creating a security group for web servers
+### Creating a security group for web servers
 {: #creating-web-sg}
 
 Use a security group to define the network access rules for your web servers.Run the following command to create a security group for web servers:
@@ -140,7 +132,7 @@ ibmcloud is security-group-rule-add web-sg inbound tcp --port-min 443 --port-max
 ibmcloud is security-group-rule-add web-sg outbound all
 ```
 
-#### Creating a security group for SSH access
+### Creating a security group for SSH access
 {: #creating-ssh-sg}
 
 Create a security group to allow SSH access to your virtual server instances. Run the following command to create a security group for SSH access:
@@ -152,13 +144,12 @@ ibmcloud is security-group-create ssh-sg production-vpc --resource-group-name pr
 ibmcloud is security-group-rule-add ssh-sg inbound tcp --port-min 22 --port-max 22 --remote 203.0.113.0/24
 ```
 
-### Preparing for virtual server instance creation
+## Preparing for virtual server instance creation
 {: #preparing-virtual-server-instance-creation}
-{: #step-4}
 
 Before you create a virtual server instance, complete the required preparation steps for a successful deployment.
 
-#### Generating or importing SSH keys
+### Generating or importing SSH keys
 {: #ssh-keys}
 
 VPC virtual server instances require SSH keys for authentication: Run the following command to generate a new SSH key pair and import the public key to {{site.data.keyword.cloud}}. You can also import an existing public key if you have one.
@@ -171,12 +162,12 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -f ~/.ssh/vpc_rsa
 ibmcloud is key-create vpc-key @~/.ssh/vpc_rsa.pub --resource-group-name prod-workload-rg
 ```
 
-#### Selecting a virtual server instance profile
+### Selecting a virtual server instance profile
 {: #select-profile}
 
 Make a list of the available profiles, and select one that meets or exceeds your Classic virtual server instance specifications. Refer to [compute considerations](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute#locations-profiles) for more details.
 
-#### Choosing an operating system image
+### Choosing an operating system image
 {: #choose-image}
 
 Run the following command to list available images:
@@ -187,7 +178,10 @@ ibmcloud is images --visibility public
 
 Select an image that matches your Classic virtual server instance OS, preferably the most recent supported version.
 
-### Step 4: Create the VPC virtual server instance from the CLI
+## Creating the VPC virtual server instance
+{: #create-vpc-virtual-server-instance}
+
+### From the CLI
 {: #create-vpc-virtual-server-instance-cli}
 {: cli}
 
@@ -201,10 +195,9 @@ ibmcloud is instance-create web-server-1 production-vpc us-south-1 bx2-2x8 subne
   --resource-group-name prod-workload-rg
 ```
 
-### Creating the VPC virtual server instance in the console
+### In the console
 {: #create-vpc-virtual-server-instance-ui}
 {: ui}
-{: #step-5}
 
 Create your virtual server instance by configuring all required components.
 
@@ -221,9 +214,8 @@ Create your virtual server instance by configuring all required components.
    * **Security groups**: web-sg, ssh-sg
 3. Click **Create a virtual server instance**
 
-### Attaching block storage (if needed)
+## Attaching block storage (if needed)
 {: #attach-block-storage}
-{: #step-6}
 
 Run the following command if your Classic virtual server instance has more block storage, create and attach volumes:
 
@@ -235,9 +227,8 @@ ibmcloud is volume-create data-volume-1 general-purpose us-south-1 --capacity 10
 ibmcloud is instance-volume-attachment-add data-vol-attachment web-server-1 data-volume-1 --auto-delete true
 ```
 
-### Reserving and associating a floating IP
+## Reserving and associating a floating IP
 {: #reserving-and-associating-a-floating-ip}
-{: #step-7}
 
 Run the following command if your virtual server instance needs public internet access:
 
@@ -249,13 +240,12 @@ ibmcloud is floating-ip-reserve web-server-1-fip --zone us-south-1 --resource-gr
 ibmcloud is floating-ip-update web-server-1-fip --nic primary --in web-server-1
 ```
 
-### Migrating data and applications
+## Migrating data and applications
 {: #migrate-data-and-applications}
-{: #step-8}
 
 Now that your VPC virtual server instance is running, migrate your data and applications by using one of the following options based on your specific requirements and constraints.
 
-#### Option 1: Application redeployment (recommended)
+### Option 1: Application redeployment (recommended)
 {: #redeploy-application}
 
 1. Connect to your new VPC virtual server instance through SSH
@@ -263,12 +253,12 @@ Now that your VPC virtual server instance is running, migrate your data and appl
 3. Deploy your application by using your CI/CD pipeline
 4. Restore data from backups or replicate from Classic virtual server instance
 
-#### Option 2: Data migration that uses rsync
+### Option 2: Data migration that uses rsync
 {: #rsync-migration}
 
 For data migration, refer to [storage migration](/docs/classic-to-vpc?topic=classic-to-vpc-data-migration-classic-to-vpc)
 
-#### Option 3: Database migration
+### Option 3: Database migration
 {: #database-migration}
 
 Use appropriate [database migration](/docs/infrastructure-hub?group=database-migration) approach to migrate your databases.
@@ -301,3 +291,10 @@ ibmcloud is instance-start web-server-1
 The following resources offer more guidance and supplemental information.
 
 * [Terraform tutorial](/docs/ibm-cloud-provider-for-terraform?topic=ibm-cloud-provider-for-terraform-sample_vpc_config)
+
+## See also
+{: #see-also-migrate-steps}
+
+* [Discovery of classic infrastructure](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure). If you have not yet inventoried your classic environment, complete discovery before you begin provisioning.
+* [Prerequisites for migration](/docs/classic-to-vpc?topic=classic-to-vpc-key-migration-prerequisites). Confirm VRF enablement, CLI setup, and quota headroom before you run these steps.
+* [Migration decisions for compute](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute). Review this topic for profile selection, high availability options, and deployable architectures to consider alongside these provisioning steps.

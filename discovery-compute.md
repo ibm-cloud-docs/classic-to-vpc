@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2026, 2026
-lastupdated: "2026-04-17"
+  years: 2026
+lastupdated: "2026-10-06"
 
 keywords: compute, classic virtual server instance
 
@@ -15,8 +15,10 @@ subcollection: classic-to-vpc
 # Discovery of classic compute resources
 {: #discover-classic-compute-resources}
 
-Before you migrate from classic infrastructure to {{site.data.keyword.vpc_full}} (VPC) infrastructure, it is important to create an inventory of all existing classic resources and capture their configuration and billing details. This approach helps ensure that you can plan capacity, cost, and migration approach accurately.
+Before you migrate from classic infrastructure to {{site.data.keyword.vpc_full}} infrastructure, create an inventory of all existing classic resources and capture their configuration and billing details.
 {: shortdesc}
+
+This approach helps ensure that you can plan capacity, cost, and migration approach accurately.
 
 ## Information to collect
 {: #compute-information-to-collect}
@@ -34,7 +36,7 @@ When you prepare for migration, gather the following information for each classi
 - IP addresses and VLANs: Check whether the virtual server uses only a private network and whether the virtual server has both a public and private network.
 - Placement groups: Check whether the virtual server instance is part of a placement group and captures the placement policy.
 
-### Additional validation steps
+### Extra validation steps
 {: #validation-steps}
 
 - Security groups: Document the firewall rules, inbound and outbound traffic policies, and group membership applied to the virtual server instance.
@@ -49,7 +51,7 @@ This data helps you to map existing classic workloads to equivalent {{site.data.
 
 With the `ibmcloud sl` CLI plug-in, you can query classic infrastructure resources.
 
-### Listng all virtual servers with CPU, memory, IP addresses, datacenter
+### Listing all virtual servers with CPU, memory, IP addresses, data centers
 {: #list-all-virtual-servers-cli-example}
 
 ```sh
@@ -146,7 +148,7 @@ curl -u "${USER}:${API_KEY}" -g \
 ```
 {: pre}
 
-Example Response
+Example output:
 
 ```json
 [
@@ -157,7 +159,7 @@ Example Response
     "maxMemory": 4096,
     "blockDevices": [
       { "device": "0", "diskImage": { "capacity": 25 } },
-      { "device": "1", "diskImage": { "capacity": 2 } }
+      { "device": "1", "diskImage": { "capacity": 2 } },
       { "device": "2", "diskImage": { "capacity": 100 } }
     ],
     "networkComponents": [
@@ -196,3 +198,10 @@ Example Response
 ]
 ```
 {: codeblock}
+
+## See also
+{: #see-also-discovery-compute}
+
+* [Discovery of classic infrastructure](/docs/classic-to-vpc?topic=classic-to-vpc-discover-classic-infrastructure). Read this topic for an overview of the full discovery process, including account planning and application grouping.
+* [Migration decisions for compute](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-decisions-for-compute). Use your compute inventory to select VPC profiles and plan high availability.
+* [Setting up your VPC environment](/docs/classic-to-vpc?topic=classic-to-vpc-vpc-creating-steps). Follow this guide after your inventory and profile decisions are complete to provision your VPC environment.
