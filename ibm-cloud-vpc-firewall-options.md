@@ -337,8 +337,8 @@ Vendor support varies by HA deployment pattern, automation requirements, routing
 | ------------------- | -------- | ------------ | ----------- | --------- | ----------------------------- |
 | Active/Passive[^ap] | Supported \n (BYOL or PayGo; native SDN Connector integration) | BYOA | BYOA | BYOA | BYOA |
 | Active/Passive bare metal deployment[^bmd] | BYOA | BYOA | BYOA | BYOA | BYOA |
-| Active/Active (HA â€“ RMNLB) | Supported (BYOL) | Supported (BYOL) | Supported (BYOL) | BYOA | BYOA, if transparent routing is compatible |
-| Active/Active (HA â€“ BGP over GRE) | Supported (BYOL) | Supported (BYOL) | Supported (BYOL, if BGP-capable) | BYOA, if BGP-capable | BYOA, if BGP and GRE are capable |
+| Active/Active (HA - RMNLB) | Supported (BYOL) | Supported (BYOL) | Supported (BYOL) | BYOA | BYOA, if transparent routing is compatible |
+| Active/Active (HA - BGP over GRE) | Supported (BYOL) | Supported (BYOL) | Supported (BYOL, if BGP-capable) | BYOA, if BGP-capable | BYOA, if BGP and GRE are capable |
 {: caption="Vendor support matrix for HA firewall deployments in {{site.data.keyword.vpc_short}}" caption-side="bottom"}
 {: row-headers}
 {: summary="This table has row and column headers. The row headers in the first column identify the deployment topology. The column headers identify the firewall vendor. To find vendor support for a specific topology, navigate to the topology row and find the cell for the vendor column."}
@@ -718,25 +718,25 @@ In these architectures, {{site.data.keyword.vpc_short}} networking does not dire
 Failover method
 :   The following failover mechanisms are commonly used in bare metal deployments:
 
-* Bare metal deployments use virtual network floating interfaces instead of SDN Connector for primary failover. In more advanced deployments, failover and instance mobility can also be implemented by using customer-managed virtualization platforms, such as KVM/QEMU-based orchestration or {{site.data.keyword.redhat_openshift_notm}} Virtualization. These platforms can support workload mobility or restart-based recovery across bare metal hosts, depending on the customer's architecture and configuration.
-* Customer-managed virtualization platforms, such as KVM/QEMU-based orchestration or {{site.data.keyword.redhat_openshift_notm}} Virtualization, can provide workload mobility or restart-based recovery across bare metal hosts.
-* Some environments implement live migration capabilities similar to VMware&reg; vMotion, where supported by the underlying virtualization platform. These solutions commonly rely on floating VLANs or equivalent Layer 2 network mobility mechanisms and are therefore typically limited to hosts connected to the same subnet within a zone.
-* Vendor-specific clustering or heartbeat mechanisms, such as VRRP, Pacemaker, or firewall-native HA protocols, can also be used depending on the firewall appliance and deployment model.
+    * Bare metal deployments use virtual network floating interfaces instead of SDN Connector for primary failover. In more advanced deployments, failover and instance mobility can also be implemented by using customer-managed virtualization platforms, such as KVM/QEMU-based orchestration or {{site.data.keyword.redhat_openshift_notm}} Virtualization. These platforms can support workload mobility or restart-based recovery across bare metal hosts, depending on the customer's architecture and configuration.
+    * Customer-managed virtualization platforms, such as KVM/QEMU-based orchestration or {{site.data.keyword.redhat_openshift_notm}} Virtualization, can provide workload mobility or restart-based recovery across bare metal hosts.
+    * Some environments implement live migration capabilities similar to VMware&reg; vMotion, where supported by the underlying virtualization platform. These solutions commonly rely on floating VLANs or equivalent Layer 2 network mobility mechanisms and are therefore typically limited to hosts connected to the same subnet within a zone.
+    * Vendor-specific clustering or heartbeat mechanisms, such as VRRP, Pacemaker, or firewall-native HA protocols, can also be used depending on the firewall appliance and deployment model.
 
 Important limitations
 :   Consider the following limitations when you use bare metal deployments:
 
-* Manual configuration required: You must manually configure and manage the hypervisor and all virtual machines.
-* Limited flexibility: Bare metal deployments cannot scale out as easily as virtual server deployments.
-* Customer managed: You are responsible for the operating system and all software.
-* Complexity: Expertise in hypervisor management and virtual machine configuration is required.
-* Floating interface scope: Virtual network floating interfaces can move only within the same subnet. Because VPC subnets are zonal constructs, floating interface-based failover and mobility solutions that depend on floating VLANs or Layer 2 network mobility cannot be used for cross-zone failover.
+    * Manual configuration required: You must manually configure and manage the hypervisor and all virtual machines.
+    * Limited flexibility: Bare metal deployments cannot scale out as easily as virtual server deployments.
+    * Customer managed: You are responsible for the operating system and all software.
+    * Complexity: Expertise in hypervisor management and virtual machine configuration is required.
+    * Floating interface scope: Virtual network floating interfaces can move only within the same subnet. Because VPC subnets are zonal constructs, floating interface-based failover and mobility solutions that depend on floating VLANs or Layer 2 network mobility cannot be used for cross-zone failover.
 
 Technical details
 :   Key technical considerations include:
 
-* The SDN Connector is not used for bare metal failover. Instead, failover is typically implemented through virtual network floating interfaces or customer-managed mechanisms. Therefore, virtual network floating interfaces are limited to movement within the same subnet and support failover only within a single zone.
-* Tested vendors: Fortinet (PCI pass-through and `macvtap`) and Palo Alto (`macvtap`).
+    * The SDN Connector is not used for bare metal failover. Instead, failover is typically implemented through virtual network floating interfaces or customer-managed mechanisms. Therefore, virtual network floating interfaces are limited to movement within the same subnet and support failover only within a single zone.
+    * Tested vendors: Fortinet (PCI pass-through and `macvtap`) and Palo Alto (`macvtap`).
 
 For more information, see [Virtual firewalls on VPC Bare Metal servers](/docs/pattern-transit-vpc?topic=pattern-transit-vpc-transit-vpc#Virtual-firewall-Appliances-on-VPC-Bare-Metals).
 
@@ -897,8 +897,8 @@ In Active/Active multizone deployments, you can combine RMNLB behavior with fire
 Route mode behavior follows this traffic flow:
 
 ```text
-REQUEST:  Client â†’ VPC Routing Table â†’ NLB (Route Mode) â†’ Firewall â†’ VPC Routing Table â†’ Server
-RESPONSE: Server â†’ VPC Routing Table â†’ NLB (Route Mode) â†’ Same Firewall â†’ VPC Routing Table â†’ Client
+REQUEST:  Client → VPC Routing Table → NLB (Route Mode) → Firewall → VPC Routing Table → Server
+RESPONSE: Server → VPC Routing Table → NLB (Route Mode) → Same Firewall → VPC Routing Table → Client
 ```
 {: pre}
 
