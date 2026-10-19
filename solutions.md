@@ -68,7 +68,12 @@ RackWare Management Module (RMM) is a third-party automated migration solution t
 
 For full details on supported migration motions, architecture diagrams, limitations, and step-by-step guides, see [RackWare RMM](/docs/infrastructure-hub?topic=infrastructure-hub-about-migration-infra#rackware-migration) in the Infrastructure Hub documentation.
 
+## Infobell IT - VPC migration service
+{: #infobellit-migration}
 
+As an {{site.data.keyword.cloud_notm}}-certified partner, Infobell IT provides a fully managed migration-as-a-service (MaaS) solution that is designed to accelerate and simplify the transition from {{site.data.keyword.cloud_notm}} classic infrastructure to {{site.data.keyword.vpc_short}}. Infobell IT uses automation, {{site.data.keyword.IBM_notm}}-certified architects, and a scalable factory delivery model to help you upgrade your infrastructure with minimal downtime, reduced operational risk, and project visibility.
+
+For more information, see [Infobell IT VPC Migration Service in the {{site.data.keyword.cloud_notm}} catalog](https://cloud.ibm.com/catalog/content/infobellit-migration-service){: external}.
 
 ## DIY migration
 {: #diy-migration}
