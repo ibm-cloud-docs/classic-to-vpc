@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-06"
+lastupdated: "2026-10-19"
 
 keywords: migration solutions, classic to vpc migration, third-party migration tools
 
@@ -67,6 +67,8 @@ This tool is specific to Classic-to-VPC VMware workload migrations and is not in
 RackWare Management Module (RMM) is a third-party automated migration solution that supports Classic-to-Classic, Classic-to-VPC, on-premises-to-VPC, and cloud-to-VPC migration motions.
 
 For full details on supported migration motions, architecture diagrams, limitations, and step-by-step guides, see [RackWare RMM](/docs/infrastructure-hub?topic=infrastructure-hub-about-migration-infra#rackware-migration) in the Infrastructure Hub documentation.
+
+
 
 ## DIY migration
 {: #diy-migration}
