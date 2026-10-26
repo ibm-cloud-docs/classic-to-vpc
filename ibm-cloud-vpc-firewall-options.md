@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-08"
+lastupdated: "2026-10-26"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -1185,7 +1185,7 @@ Virtual network floating interfaces
 :   Automatic failover without SDN Connector overhead.
 
 Significant limitations
-:   Requires manual hypervisor and VM configuration, monthly billing only, limited scaling flexibility, and customer-managed OS and software.
+:   Requires manual hypervisor and VM configuration, limited scaling flexibility, and customer-managed OS and software.
 
 Recommendation
 :   Consider virtual server instance deployments first because of their ease of operation and flexibility.
@@ -1234,7 +1234,7 @@ Multizone HA
 :   Higher cost with greater availability.
 
 Virtual server instance versus bare metal server
-:   Virtual server instances offer hourly billing and operational flexibility. Bare metal servers require monthly billing and manual management.
+:   Virtual server instances offer hourly billing and operational flexibility. Bare metal servers require manual management.
 
 PayGo versus BYOL
 :   PayGo includes the firewall license and FortiCare Premium support in the hourly billing rate. No upfront license purchase or renewal management is required. BYOL requires a separate license purchase from the vendor, which adds procurement overhead but might suit you if you have existing vendor license agreements.
@@ -1248,6 +1248,7 @@ PayGo versus BYOL
 [IBM TechXchange firewall blog posts](https://community.ibm.com/community/user/viewdocument/firewall-deployment-library-for-ibm-cloud-vpc?CommunityKey=dd1ee2bc-c83b-4afb-bd1c-9095ff0c3bc1&tab=librarydocuments){: external} provide technical walkthroughs and deployment guidance for firewall solutions in {{site.data.keyword.vpc_short}}.
 
 ### {{site.data.keyword.cloud_notm}} documentation
+{: #fortigate-documentation}
 
 - [Fortinet vFSA on IBM Cloud: Bare-Metal HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/07/02/fortinet-vfsa-on-ibm-cloud-bm-ap){: external}
 
