@@ -2,7 +2,7 @@
 
 copyright:
   years: 2026
-lastupdated: "2026-10-08"
+lastupdated: "2026-10-26"
 
 keywords: vpc firewall, firewall deployment, high availability, fortinet,
   palo alto, juniper, check point, f5, transit vpc, sdn connector
@@ -1248,6 +1248,7 @@ PayGo versus BYOL
 [IBM TechXchange firewall blog posts](https://community.ibm.com/community/user/viewdocument/firewall-deployment-library-for-ibm-cloud-vpc?CommunityKey=dd1ee2bc-c83b-4afb-bd1c-9095ff0c3bc1&tab=librarydocuments){: external} provide technical walkthroughs and deployment guidance for firewall solutions in {{site.data.keyword.vpc_short}}.
 
 ### {{site.data.keyword.cloud_notm}} documentation
+{: #fortigate-documentation}
 
 - [Fortinet vFSA on IBM Cloud: Bare-Metal HA](https://community.ibm.com/community/user/blogs/andrew-sloma/2026/07/02/fortinet-vfsa-on-ibm-cloud-bm-ap){: external}
 
