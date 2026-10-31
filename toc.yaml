@@ -42,6 +42,8 @@ toc:
           - link:
               label: VPC Plus Solution
               href: https://cloud.ibm.com/docs/wanclouds-vpc-plus
+      - topic: planning/performance-considerations.md
+        navtitle: Performance considerations for migrating from Classic Infrastructure to VPC
       - topic: planning/prerequisites.md
         navtitle: Prerequisites for Migration
       - topicgroup:
