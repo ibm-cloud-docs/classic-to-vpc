@@ -272,7 +272,7 @@ Classic-to-{{site.data.keyword.vpc_short}} coexistence through {{site.data.keywo
 ### VPC address prefix and routing considerations
 {: #c2v-performance-vpc-address-prefix-routing}
 
-{{site.data.keyword.vpc_short}} uses address prefixes to define the IP address ranges that are routable within a {{site.data.keyword.vpc_short}}. Help ensure that you meet the following conditions:
+{{site.data.keyword.vpc_short}} uses address prefixes to define the IP address ranges that are routable within {{site.data.keyword.vpc_short}}. Help ensure that you meet the following conditions:
 
 - {{site.data.keyword.vpc_short}} address prefixes don't overlap with classic infrastructure `10.x.x.x` ranges if you use {{site.data.keyword.tg_short}} to bridge both environments. Overlapping CIDRs causes routing conflicts.
 - You configure ingress routing tables if you need to direct traffic from {{site.data.keyword.tg_short}} or {{site.data.keyword.dl_full}} to a specific next hop (for example, a network virtual appliance for inspection).
@@ -320,7 +320,7 @@ Compute resources in {{site.data.keyword.vpc_short}} differ from compute resourc
 | Very high memory (`vx2`) | SAP&reg;-certified profiles | SAP HANA on classic infrastructure |
 {: caption="VPC instance profile families" caption-side="bottom"}
 
-Not all classic VSI configurations map directly to a {{site.data.keyword.vpc_short}} profile. Classic infrastructure offers highly flexible custom vCPU, RAM, and disk combinations, but {{site.data.keyword.vpc_short}} profiles are fixed configurations. Audit all classic VSI configurations and identify the closest {{site.data.keyword.vpc_short}} profile match. This audit might also be an opportunity to right-size.
+Not all classic VSI configurations map directly to {{site.data.keyword.vpc_short}} profile. Classic infrastructure offers highly flexible custom vCPU, RAM, and disk combinations, but {{site.data.keyword.vpc_short}} profiles are fixed configurations. Audit all classic VSI configurations and identify the closest {{site.data.keyword.vpc_short}} profile match. This audit might also be an opportunity to right-size.
 
 ### Enhanced networking in VPC
 {: #c2v-performance-enhanced-networking}
@@ -661,7 +661,7 @@ Kubernetes&reg; clusters on {{site.data.keyword.vpc_short}} have distinct perfor
 {{site.data.keyword.containerlong}} on {{site.data.keyword.vpc_short}} has different network performance characteristics:
 
 Pod networking
-:   {{site.data.keyword.vpc_short}} uses a {{site.data.keyword.vpc_short}}-native Container Network Interface (CNI) plug-in with direct pod IP address assignment from {{site.data.keyword.vpc_short}} subnets. Classic clusters use Calico with overlay networking. {{site.data.keyword.vpc_short}}-native networking provides lesser latency and higher throughput for pod-to-pod communication.
+:   {{site.data.keyword.vpc_short}} uses {{site.data.keyword.vpc_short}}-native Container Network Interface (CNI) plug-in with direct pod IP address assignment from {{site.data.keyword.vpc_short}} subnets. Classic clusters use Calico with overlay networking. {{site.data.keyword.vpc_short}}-native networking provides lesser latency and higher throughput for pod-to-pod communication.
 
 Service load balancing
 :   Clusters on {{site.data.keyword.vpc_short}} use {{site.data.keyword.vpc_short}} load balancers for Kubernetes `LoadBalancer` services. Classic clusters use classic load balancers. {{site.data.keyword.vpc_short}} load balancers provide better integration with {{site.data.keyword.vpc_short}} security groups and network ACLs.
